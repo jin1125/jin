@@ -1,8 +1,8 @@
-<script setup>
-import { computed } from 'vue';
+<script setup lang="ts">
 import BreezeButton from '@/Components/Button.vue';
 import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { computed } from 'vue';
 
 const props = defineProps({
     status: String,
