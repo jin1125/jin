@@ -15,12 +15,15 @@ import { Link } from '@inertiajs/inertia-vue3';
       <nav class="space-x-10">
         <Link href="">
           Profile
+          <font-awesome-icon icon="fa-solid fa-address-card" />
         </Link>
         <Link href="">
           Study
+          <font-awesome-icon icon="fa-solid fa-book-open" />
         </Link>
         <a href="https://github.com/jin1125">
           Github
+          <font-awesome-icon icon="fa-brands fa-github" />
         </a>
       </nav>
     </div>
