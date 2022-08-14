@@ -16,8 +16,6 @@ use Inertia\Inertia;
 
 Route::inertia('/', 'Profile')->name('profile');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::inertia('/study', 'Study')->name('study');
 
 require __DIR__.'/auth.php';
