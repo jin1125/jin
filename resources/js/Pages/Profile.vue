@@ -5,7 +5,7 @@ import Header from '@/Layouts/Header.vue';
 <template>
   <Header />
 
-  <div class="grid grid-cols-2 justify-items-center m-20">
+  <div class="grid grid-cols-2 justify-items-center my-16 mx-20">
     <div class="space-y-6 text-center">
       <img
         class="rounded-full w-64"
