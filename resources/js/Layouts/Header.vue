@@ -13,15 +13,24 @@ import { Link } from '@inertiajs/inertia-vue3';
       </h1>
 
       <nav class="space-x-10">
-        <Link :href="route('profile')">
+        <Link
+          class="hover:opacity-80"
+          :href="route('profile')"
+        >
           Profile
           <font-awesome-icon icon="fa-solid fa-address-card" />
         </Link>
-        <Link :href="route('study')">
+        <Link
+          class="hover:opacity-80"
+         :href="route('study')"
+        >
           Study
           <font-awesome-icon icon="fa-solid fa-book-open" />
         </Link>
-        <a href="https://github.com/jin1125">
+        <a
+          class="hover:opacity-80"
+          href="https://github.com/jin1125"
+        >
           Github
           <font-awesome-icon icon="fa-brands fa-github" />
         </a>

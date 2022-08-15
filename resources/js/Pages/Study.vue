@@ -26,8 +26,7 @@ import Page from '@/Layouts/Page.vue';
       <h3>完了日</h3>
       <h3>所感</h3>
       <button
-        class="bg-white justify-self-end w-8 h-8 rounded-full
-          text-blue hover:bg-blue hover:text-white"
+        class="justify-self-end hover:opacity-80"
       >
         <font-awesome-icon icon="fa-solid fa-pen-to-square" />
       </button>
