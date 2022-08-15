@@ -40,7 +40,7 @@ import Page from '@/Layouts/Page.vue';
             Skills
           </h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim asperiores maxime nisi nulla vel minus, minima non unde quibusdam saepe ducimus beatae neque sint voluptatem repellat aspernatur dicta, libero officiis.
+            JavaScript / Typescript  / Vue.js / PHP / Laravel / TailwindCSS
           </p>
         </div>
       </div>
