@@ -40,7 +40,7 @@ import Page from '@/Layouts/Page.vue';
             Skills
           </h2>
           <p>
-            JavaScript / Typescript  / Vue.js / PHP / Laravel / TailwindCSS
+            HTML / CSS / TailwindCSS / JavaScript / Typescript  / Vue.js / PHP / Laravel
           </p>
         </div>
       </div>
