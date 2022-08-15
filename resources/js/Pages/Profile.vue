@@ -13,7 +13,7 @@ import Page from '@/Layouts/Page.vue';
         >
 
         <div class="text-blue font-bold">
-          <h2 class="mb-3 text-2xl">
+          <h2 class="mb-3 text-3xl">
             Shogo Jinta
           </h2>
           <p>
