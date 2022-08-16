@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import Modal from '@/Components/Modal.vue';
 import Page from '@/Layouts/Page.vue';
+
+const isOpenModal = ref(false);
+const onOpenModalClick = () => isOpenModal.value = true;
 </script>
 
 <template>
@@ -26,10 +31,17 @@ import Page from '@/Layouts/Page.vue';
       <h3>完了日</h3>
       <h3>所感</h3>
       <button
+        @click.prevent="onOpenModalClick()"
         class="justify-self-end hover:opacity-80"
       >
         <font-awesome-icon icon="fa-solid fa-pen-to-square" />
       </button>
     </div>
+
+    <Modal v-model="isOpenModal">
+      <div class="font-bold text-blue text-2xl">
+        Admin login
+      </div>
+    </Modal>
   </Page>
 </template>
