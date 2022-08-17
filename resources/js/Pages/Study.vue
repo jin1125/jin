@@ -3,6 +3,13 @@ import { ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
 import Page from '@/Layouts/Page.vue';
 
+defineProps({
+  isLogin: {
+    type: Boolean,
+    default: false,
+  },
+})
+
 const isOpenModal = ref(false);
 const onOpenModalClick = () => isOpenModal.value = true;
 </script>
