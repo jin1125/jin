@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::inertia('/', 'Profile')->name('profile');
+Route::inertia('/', 'Profile')
+    ->name('profile');
 
-Route::inertia('/study', 'Study')->name('study');
+Route::prefix('study')
+    ->controller(StudyController::class)
+    ->name('study')
+    ->group(function () {
+    Route::get('/', 'showStudy');
+});
 
 require __DIR__.'/auth.php';
