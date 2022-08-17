@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
 import Page from '@/Layouts/Page.vue';
+import { useForm } from '@inertiajs/inertia-vue3';
 
 defineProps({
   isLogin: {
@@ -11,6 +12,20 @@ defineProps({
 })
 
 const isOpenModal = ref(false);
+
+const form = useForm({
+    email: '',
+    password: '',
+    remember: false
+});
+
+const submit = () => {
+    form.post(route('login'), {
+        onFinish: () => form.reset('password'),
+        onSuccess: () => isOpenModal.value = false,
+    });
+};
+
 const onOpenModalClick = () => isOpenModal.value = true;
 </script>
 
@@ -49,6 +64,51 @@ const onOpenModalClick = () => isOpenModal.value = true;
       <div class="font-bold text-blue text-2xl">
         Admin login
       </div>
+      
+      <form @submit.prevent="submit">
+        <div>
+          <label for="email">
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            v-model="form.email"
+            autocomplete="on"
+            autofocus
+            required
+          >
+          <p
+            v-if="form.errors.email"
+            class="text-sm text-red-600"
+          >
+            {{ form.errors.email }}
+          </p>
+        </div>
+
+        <div class="mt-4">
+          <label for="password">
+            Password
+          </label>
+          <input
+            id="password"
+            type="password"
+            v-model="form.password"
+            autocomplete="on"
+            required
+          >
+          <p
+            v-if="form.errors.password"
+            class="text-sm text-red-600"
+          >
+            {{ form.errors.password }}
+          </p>
+        </div>
+
+        <button type="submit">
+          Log in
+        </button>
+      </form>
     </Modal>
   </Page>
 </template>
