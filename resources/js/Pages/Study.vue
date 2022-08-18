@@ -25,6 +25,7 @@ const onLoginClick = () => {
   form.post(route('login'),
     {
       onSuccess: () => isOpenModal.value = false,
+      onError: () => form.reset('password'),
   });
 };
 
