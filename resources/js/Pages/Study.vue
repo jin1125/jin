@@ -4,6 +4,10 @@ import Modal from '@/Components/Modal.vue';
 import Page from '@/Layouts/Page.vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 
+import BreezeDropdownLink from '@/Components/DropdownLink.vue';
+
+const isOpenModal = ref(false);
+
 defineProps({
   isLogin: {
     type: Boolean,
@@ -11,13 +15,13 @@ defineProps({
   },
 })
 
-const isOpenModal = ref(false);
-
 const form = useForm({
     email: '',
     password: '',
     remember: false
 });
+
+const onOpenModalClick = () => isOpenModal.value = true;
 
 const submit = () => {
     form.post(route('login'), {
@@ -25,12 +29,16 @@ const submit = () => {
         onSuccess: () => isOpenModal.value = false,
     });
 };
-
-const onOpenModalClick = () => isOpenModal.value = true;
 </script>
 
 <template>
   <Page >
+    {{ isLogin }}
+
+    <BreezeDropdownLink :href="route('logout')" method="post" as="button">
+      Log Out
+    </BreezeDropdownLink>
+
     <div class="flex items-center mb-10 space-x-5">
       <img
         class="w-40"
@@ -64,7 +72,7 @@ const onOpenModalClick = () => isOpenModal.value = true;
       <div class="font-bold text-blue text-2xl">
         Admin login
       </div>
-      
+
       <form @submit.prevent="submit">
         <div>
           <label for="email">
