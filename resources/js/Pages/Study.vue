@@ -16,7 +16,6 @@ defineProps({
 const form = useForm({
     email: '',
     password: '',
-    remember: false
 });
 
 const onOpenModalClick = () => isOpenModal.value = true;
@@ -45,7 +44,7 @@ const onLoginClick = () => {
     <div
       class="bg-blue font-bold gap-2 grid
         grid-cols-[150px_100px_100px_100px_minmax(200px,_1fr)_100px]
-        h-12 items-center overflow-x-auto px-3 text-white"
+        h-12 items-center overflow-x-auto px-5 text-white"
     >
       <h3>タイトル</h3>
       <h3>リンク</h3>
@@ -61,52 +60,76 @@ const onLoginClick = () => {
     </div>
 
     <Modal v-model="isOpenModal">
-      <div class="font-bold text-blue text-2xl">
-        Admin login
-      </div>
+      <div class="space-y-10 text-blue text-center">
+        <div class="font-bold text-blue text-2xl">
+          Admin login
+        </div>
 
-      <div>
-        <label for="email">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          v-model="form.email"
-          autocomplete="on"
-          autofocus
-          required
-        >
-        <p
-          v-if="form.errors.email"
-          class="text-sm text-red-600"
-        >
-          {{ form.errors.email }}
-        </p>
-      </div>
+        <div class="space-y-5">
+          <div>
+            <div class="gap-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
+                for="email"
+              >
+                Email
+              </label>
+              <div class="border-b border-blue col-span-3">
+                <input
+                  class="appearance-none border-none py-1 w-full focus:outline-none"
+                  id="email"
+                  type="email"
+                  v-model="form.email"
+                  autocomplete="on"
+                  autofocus
+                  required
+                >
+              </div>
+            </div>
+            <p
+              v-if="form.errors.email"
+              class="text-sm text-red-600"
+            >
+              {{ form.errors.email }}
+            </p>
+          </div>
 
-      <div class="mt-4">
-        <label for="password">
-          Password
-        </label>
-        <input
-          id="password"
-          type="password"
-          v-model="form.password"
-          autocomplete="on"
-          required
-        >
-        <p
-          v-if="form.errors.password"
-          class="text-red-600 text-sm"
-        >
-          {{ form.errors.password }}
-        </p>
-      </div>
+          <div>
+            <div class="gap-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
+                for="password"
+              >
+                Password
+              </label>
+              <div class="border-b border-blue col-span-3">
+                <input
+                  class="appearance-none border-none py-1 w-full focus:outline-none"
+                  id="password"
+                  type="password"
+                  v-model="form.password"
+                  autocomplete="on"
+                  required
+                >
+              </div>
+            </div>
+            <p
+              v-if="form.errors.password"
+              class="text-red-600 text-sm"
+            >
+              {{ form.errors.password }}
+            </p>
+          </div>
+        </div>
 
-      <button @click.prevent="onLoginClick()">
-        Log in
-      </button>
+        <button
+          @click.prevent="onLoginClick()"
+          class="font-bold bg-blue py-1 px-6 rounded-full
+            text-white hover:opacity-80"
+        >
+          Login
+        </button>
+      </div>
     </Modal>
   </Page>
 </template>
