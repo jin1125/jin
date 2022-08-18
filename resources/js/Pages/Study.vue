@@ -4,8 +4,6 @@ import Modal from '@/Components/Modal.vue';
 import Page from '@/Layouts/Page.vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 
-import BreezeDropdownLink from '@/Components/DropdownLink.vue';
-
 const isOpenModal = ref(false);
 
 defineProps({
@@ -23,7 +21,7 @@ const form = useForm({
 
 const onOpenModalClick = () => isOpenModal.value = true;
 
-const submit = () => {
+const onLoginClick = () => {
     form.post(route('login'), {
         onFinish: () => form.reset('password'),
         onSuccess: () => isOpenModal.value = false,
@@ -33,12 +31,6 @@ const submit = () => {
 
 <template>
   <Page >
-    {{ isLogin }}
-
-    <BreezeDropdownLink :href="route('logout')" method="post" as="button">
-      Log Out
-    </BreezeDropdownLink>
-
     <div class="flex items-center mb-10 space-x-5">
       <img
         class="w-40"
@@ -73,50 +65,48 @@ const submit = () => {
         Admin login
       </div>
 
-      <form @submit.prevent="submit">
-        <div>
-          <label for="email">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            v-model="form.email"
-            autocomplete="on"
-            autofocus
-            required
-          >
-          <p
-            v-if="form.errors.email"
-            class="text-sm text-red-600"
-          >
-            {{ form.errors.email }}
-          </p>
-        </div>
+      <div>
+        <label for="email">
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          v-model="form.email"
+          autocomplete="on"
+          autofocus
+          required
+        >
+        <p
+          v-if="form.errors.email"
+          class="text-sm text-red-600"
+        >
+          {{ form.errors.email }}
+        </p>
+      </div>
 
-        <div class="mt-4">
-          <label for="password">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            v-model="form.password"
-            autocomplete="on"
-            required
-          >
-          <p
-            v-if="form.errors.password"
-            class="text-sm text-red-600"
-          >
-            {{ form.errors.password }}
-          </p>
-        </div>
+      <div class="mt-4">
+        <label for="password">
+          Password
+        </label>
+        <input
+          id="password"
+          type="password"
+          v-model="form.password"
+          autocomplete="on"
+          required
+        >
+        <p
+          v-if="form.errors.password"
+          class="text-red-600 text-sm"
+        >
+          {{ form.errors.password }}
+        </p>
+      </div>
 
-        <button type="submit">
-          Log in
-        </button>
-      </form>
+      <button @click.prevent="onLoginClick()">
+        Log in
+      </button>
     </Modal>
   </Page>
 </template>
