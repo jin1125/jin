@@ -22,16 +22,18 @@ const form = useForm({
 const onOpenModalClick = () => isOpenModal.value = true;
 
 const onLoginClick = () => {
-  form.post(route('login'), {
-    onFinish: () => form.reset('password'),
-    onSuccess: () => isOpenModal.value = false,
+  form.post(route('login'),
+    {
+      onSuccess: () => isOpenModal.value = false,
   });
 };
 
 const onLogoutClick = () => {
-  Inertia.post(route('logout'))
-
-  isOpenModal.value = false
+  Inertia.post(route('logout'),
+    {},
+    {
+      onSuccess: () => isOpenModal.value = false,
+  });
 };
 </script>
 
