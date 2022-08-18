@@ -28,7 +28,17 @@ import Page from '@/Layouts/Page.vue';
       <div class="space-y-10 text-blue">
         <div class="space-y-3">
           <h2 class="font-bold text-2xl">
-            Career
+            Skills
+          </h2>
+          <p>
+            HTML / CSS / TailwindCSS / JavaScript /
+            Typescript  / Vue.js / PHP / Laravel
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h2 class="font-bold text-2xl">
+            Careers
           </h2>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur debitis architecto ex? In ratione quae ea porro laborum eligendi numquam sit! Nam molestiae error saepe porro. Vero veniam quia dolorum.
@@ -37,11 +47,10 @@ import Page from '@/Layouts/Page.vue';
 
         <div class="space-y-3">
           <h2 class="font-bold text-2xl">
-            Skills
+            Hobbies
           </h2>
           <p>
-            HTML / CSS / TailwindCSS / JavaScript /
-            Typescript  / Vue.js / PHP / Laravel
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio similique porro id, necessitatibus vitae a libero vel, ea voluptas tempora ad recusandae delectus obcaecati at quo dicta praesentium! Cumque, accusantium?
           </p>
         </div>
       </div>
