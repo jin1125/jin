@@ -5,7 +5,8 @@ import Page from '@/Layouts/Page.vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 
-const isOpenModal = ref(false);
+const showModal = ref(false);
+const showModalContent = ref(true);
 
 defineProps({
   isLogin: {
@@ -19,21 +20,27 @@ const form = useForm({
   password: '',
 });
 
-const onOpenModalClick = () => isOpenModal.value = true;
+const onOpenModalClick = () => showModal.value = true;
 
 const onLoginClick = () => {
+  showModalContent.value = false
+
   form.post(route('login'),
     {
-      onSuccess: () => isOpenModal.value = false,
+      onSuccess: () => showModal.value = false,
+      onFinish: () => showModalContent.value = true,
       onError: () => form.reset('password'),
   });
 };
 
 const onLogoutClick = () => {
+  showModalContent.value = false
+
   Inertia.post(route('logout'),
     {},
     {
-      onSuccess: () => isOpenModal.value = false,
+      onSuccess: () => showModal.value = false,
+      onFinish: () => showModalContent.value = true,
   });
 };
 </script>
@@ -69,13 +76,16 @@ const onLogoutClick = () => {
       </button>
     </div>
 
-    <Modal v-model="isOpenModal">
+    <Modal v-model="showModal">
       <div class="text-blue text-center">
-        <div class="font-bold mb-10 text-blue text-2xl">
-          {{ isLogin ? 'Edit?' : 'Admin login' }}
+        <div
+          v-if="showModalContent"
+          class="font-bold mb-10 text-blue text-2xl"
+        >
+          {{ !isLogin ? 'Admin login' : 'Edit?' }}
         </div>
 
-        <div v-if="!isLogin">
+        <div v-if="!isLogin && showModalContent">
           <div class="mb-10 space-y-5">
             <div>
               <div class="gap-5 grid grid-cols-4 items-center text-start">
@@ -143,7 +153,7 @@ const onLogoutClick = () => {
         </div>
 
         <div
-          v-else
+          v-if="isLogin && showModalContent"
           class="flex-col space-y-5 w-52"
         >
           <button
@@ -168,6 +178,14 @@ const onLogoutClick = () => {
             >
               Logout
             </p>
+          </div>
+        </div>
+
+        <div v-if="!showModalContent">
+          <div class="flex justify-center space-x-5">
+            <span class="animate-ping bg-blue h-2 rounded-full w-2" />
+            <span class="animate-ping bg-blue h-2 rounded-full w-2" />
+            <span class="animate-ping bg-blue h-2 rounded-full w-2" />
           </div>
         </div>
       </div>
