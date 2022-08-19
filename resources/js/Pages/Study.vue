@@ -46,7 +46,7 @@ const onLogoutClick = () => {
 </script>
 
 <template>
-  <Page >
+  <Page>
     <div class="flex items-center mb-10 space-x-5">
       <img
         class="w-40"
