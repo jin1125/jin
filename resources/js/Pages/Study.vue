@@ -6,7 +6,7 @@ import { useForm } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 
 const showModal = ref(false);
-const showModalContent = ref(true);
+const showProcessing = ref(false);
 
 defineProps({
   isLogin: {
@@ -23,24 +23,24 @@ const form = useForm({
 const onOpenModalClick = () => showModal.value = true;
 
 const onLoginClick = () => {
-  showModalContent.value = false
+  showProcessing.value = true
 
   form.post(route('login'),
     {
       onSuccess: () => showModal.value = false,
-      onFinish: () => showModalContent.value = true,
+      onFinish: () => showProcessing.value = false,
       onError: () => form.reset('password'),
   });
 };
 
 const onLogoutClick = () => {
-  showModalContent.value = false
+  showProcessing.value = true
 
   Inertia.post(route('logout'),
     {},
     {
       onSuccess: () => showModal.value = false,
-      onFinish: () => showModalContent.value = true,
+      onFinish: () => showProcessing.value = false,
   });
 };
 </script>
@@ -79,13 +79,13 @@ const onLogoutClick = () => {
     <Modal v-model="showModal">
       <div class="text-blue text-center">
         <div
-          v-if="showModalContent"
+          v-if="!showProcessing"
           class="font-bold mb-10 text-blue text-2xl"
         >
           {{ !isLogin ? 'Admin login' : 'Edit?' }}
         </div>
 
-        <div v-if="!isLogin && showModalContent">
+        <div v-if="!isLogin && !showProcessing">
           <div class="mb-10 space-y-5">
             <div>
               <div class="gap-5 grid grid-cols-4 items-center text-start">
@@ -153,7 +153,7 @@ const onLogoutClick = () => {
         </div>
 
         <div
-          v-if="isLogin && showModalContent"
+          v-if="isLogin && !showProcessing"
           class="flex-col space-y-5 w-52"
         >
           <button
@@ -181,7 +181,7 @@ const onLogoutClick = () => {
           </div>
         </div>
 
-        <div v-if="!showModalContent">
+        <div v-if="showProcessing">
           <div class="flex justify-center space-x-5">
             <span class="animate-ping bg-blue h-2 rounded-full w-2" />
             <span class="animate-ping bg-blue h-2 rounded-full w-2" />
