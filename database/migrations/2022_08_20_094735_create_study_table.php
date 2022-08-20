@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('study', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('link')->nullable();;
-            $table->string('progress')->nullable();;
+            $table->string('link')->nullable();
+            $table->string('progress');
             $table->string('complete_at')->nullable();
-            $table->string('comment')->nullable();;
+            $table->string('comment')->nullable();
+            $table->string('category');
         });
     }
 
