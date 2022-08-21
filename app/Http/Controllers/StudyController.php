@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudyRequest;
 use App\Models\Study;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,7 @@ class StudyController extends Controller
     /**
      * 新規投稿リクエストを送信
      */
-    public function sendNewPost(Request $request)
+    public function sendNewPost(StudyRequest $request)
     {
         Study::create([
             'title'       => $request->input('title'),
