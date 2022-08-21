@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { PropType, ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
 import Page from '@/Layouts/Page.vue';
 import { useForm } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
+
+type StudyRecords = {
+    id: number
+    title: string
+    link: string
+    progress: string
+    complete_at: string
+    comment: string
+    category: string
+};
 
 const showModal = ref(false);
 const showProcessing = ref(false);
@@ -15,10 +25,10 @@ defineProps({
   },
 
   studyRecords: {
-    type: Array,
+    type: Array as PropType<StudyRecords[]>,
     default: ()=>([]),
   },
-})
+});
 
 const form = useForm({
   email: '',
