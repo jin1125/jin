@@ -304,7 +304,6 @@ const onDestroyPostClick = (postId: number) => {
                   v-model="newPostForm.link"
                   autocomplete="on"
                   autofocus
-                  required
                 >
               </div>
               <p
@@ -358,7 +357,6 @@ const onDestroyPostClick = (postId: number) => {
                   v-model="newPostForm.complete_at"
                   autocomplete="on"
                   autofocus
-                  required
                 >
               </div>
               <p
@@ -385,7 +383,6 @@ const onDestroyPostClick = (postId: number) => {
                   v-model="newPostForm.comment"
                   autocomplete="on"
                   autofocus
-                  required
                 >
               </div>
               <p
