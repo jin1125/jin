@@ -29,7 +29,7 @@ const onCloseModalClick = () => {
         v-if="modelValue"
         @click.self="onCloseModalClick()"
         class="bg-black bg-opacity-30 bottom-0 fixed flex
-          items-center justify-center left-0 right-0 top-0"
+          items-center justify-center left-0 right-0 top-0 z-20"
       >
         <div class="bg-white mx-5 p-8 rounded-md shadow-md">
           <slot />

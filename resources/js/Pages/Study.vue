@@ -2,8 +2,8 @@
 import { PropType, ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
 import Page from '@/Layouts/Page.vue';
-import { useForm } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
+import { useForm } from '@inertiajs/inertia-vue3';
 
 type StudyRecords = {
     id: number
@@ -30,9 +30,18 @@ defineProps({
   },
 });
 
-const form = useForm({
+const loginForm = useForm({
   email: '',
   password: '',
+});
+
+const recordForm = useForm({
+  title: '',
+  link: '',
+  progress: '',
+  complete_at: '',
+  comment: '',
+  category: '',
 });
 
 const onOpenModalClick = () => showModal.value = true;
@@ -41,11 +50,11 @@ const onCloseModalClick = () => showModal.value = false;
 const onLoginClick = () => {
   showProcessing.value = true
 
-  form.post(route('login'),
+  loginForm.post(route('login'),
     {
       onSuccess: () => showModal.value = false,
       onFinish: () => showProcessing.value = false,
-      onError: () => form.reset('password'),
+      onError: () => loginForm.reset('password'),
     }
   );
 };
@@ -54,6 +63,18 @@ const onLogoutClick = () => {
   showProcessing.value = true;
 
   Inertia.post(route('logout'),
+    {},
+    {
+      onSuccess: () => showModal.value = false,
+      onFinish: () => showProcessing.value = false,
+    }
+  );
+};
+
+const onRecordClick = () => {
+  showProcessing.value = true;
+
+  Inertia.post(route('study.store'),
     {},
     {
       onSuccess: () => showModal.value = false,
@@ -106,7 +127,7 @@ const onLogoutClick = () => {
           </button>
         </div>
 
-        <ul class="">
+        <ul>
           <li
             v-for="(studyRecord) in studyRecords"
             :key="studyRecord.id"
@@ -133,7 +154,10 @@ const onLogoutClick = () => {
             <span class="whitespace-pre">
               {{ studyRecord.comment }}
             </span>
-            <button class="justify-self-center">
+            <button
+              v-if="isLogin"
+              class="justify-self-center"
+            >
               <font-awesome-icon icon="fa-solid fa-delete-left" />
             </button>
           </li>
@@ -148,7 +172,7 @@ const onLogoutClick = () => {
           v-if="!showProcessing"
           class="font-bold mb-12 text-blue text-2xl"
         >
-          {{ !isLogin ? 'Admin login' : 'Edit?' }}
+          {{ !isLogin ? 'Admin login' : 'New post' }}
         </div>
 
         <div v-if="!isLogin && !showProcessing">
@@ -166,7 +190,7 @@ const onLogoutClick = () => {
                     class="appearance-none border-none py-1 w-full focus:outline-none"
                     id="email"
                     type="email"
-                    v-model="form.email"
+                    v-model="loginForm.email"
                     autocomplete="on"
                     autofocus
                     required
@@ -174,10 +198,10 @@ const onLogoutClick = () => {
                 </div>
               </div>
               <p
-                v-if="form.errors.email"
+                v-if="loginForm.errors.email"
                 class="text-sm text-red-600"
               >
-                {{ form.errors.email }}
+                {{ loginForm.errors.email }}
               </p>
             </div>
 
@@ -194,17 +218,17 @@ const onLogoutClick = () => {
                     class="appearance-none border-none py-1 w-full focus:outline-none"
                     id="password"
                     type="password"
-                    v-model="form.password"
+                    v-model="loginForm.password"
                     autocomplete="on"
                     required
                   >
                 </div>
               </div>
               <p
-                v-if="form.errors.password"
+                v-if="loginForm.errors.password"
                 class="text-red-600 text-sm"
               >
-                {{ form.errors.password }}
+                {{ loginForm.errors.password }}
               </p>
             </div>
           </div>
@@ -226,14 +250,184 @@ const onLogoutClick = () => {
               Cancel
             </button>
           </div>
-
         </div>
 
         <div
           v-if="isLogin && !showProcessing"
-          class="flex-col space-y-4 w-52"
+          class="flex-col space-y-4"
         >
+          <div class="mb-12 space-y-5">
+            <div>
+              <div class="gap-5 grid grid-cols-4 items-center text-start">
+                <label
+                  class="col-span-1 font-bold"
+                  for="title"
+                >
+                  タイトル
+                </label>
+                <div class="border-b border-blue col-span-3">
+                  <input
+                    class="appearance-none border-none py-1 w-full focus:outline-none"
+                    id="title"
+                    type="text"
+                    v-model="recordForm.title"
+                    autocomplete="on"
+                    autofocus
+                    required
+                  >
+                </div>
+              </div>
+              <p
+                v-if="recordForm.errors.title"
+                class="text-sm text-red-600"
+              >
+                {{ recordForm.errors.title }}
+              </p>
+            </div>
+
+            <div>
+              <div class="gap-5 grid grid-cols-4 items-center text-start">
+                <label
+                  class="col-span-1 font-bold"
+                  for="link"
+                >
+                  リンク
+                </label>
+                <div class="border-b border-blue col-span-3">
+                  <input
+                    class="appearance-none border-none py-1 w-full focus:outline-none"
+                    id="link"
+                    type="url"
+                    v-model="recordForm.link"
+                    autocomplete="on"
+                    autofocus
+                    required
+                  >
+                </div>
+              </div>
+              <p
+                v-if="recordForm.errors.link"
+                class="text-sm text-red-600"
+              >
+                {{ recordForm.errors.link }}
+              </p>
+            </div>
+
+            <div>
+              <div class="gap-5 grid grid-cols-4 items-center text-start">
+                <label
+                  class="col-span-1 font-bold"
+                  for="progress"
+                >
+                  進捗
+                </label>
+                <div class="border-b border-blue col-span-3">
+                  <input
+                    class="appearance-none border-none py-1 w-full focus:outline-none"
+                    id="title"
+                    type="progress"
+                    v-model="recordForm.progress"
+                    autocomplete="on"
+                    autofocus
+                    required
+                  >
+                </div>
+              </div>
+              <p
+                v-if="recordForm.errors.progress"
+                class="text-sm text-red-600"
+              >
+                {{ recordForm.errors.progress }}
+              </p>
+            </div>
+
+            <div>
+              <div class="gap-5 grid grid-cols-4 items-center text-start">
+                <label
+                  class="col-span-1 font-bold"
+                  for="complete_at"
+                >
+                  完了日
+                </label>
+                <div class="border-b border-blue col-span-3">
+                  <input
+                    class="appearance-none border-none py-1 w-full focus:outline-none"
+                    id="title"
+                    type="complete_at"
+                    v-model="recordForm.complete_at"
+                    autocomplete="on"
+                    autofocus
+                    required
+                  >
+                </div>
+              </div>
+              <p
+                v-if="recordForm.errors.complete_at"
+                class="text-sm text-red-600"
+              >
+                {{ recordForm.errors.complete_at }}
+              </p>
+            </div>
+
+            <div>
+              <div class="gap-5 grid grid-cols-4 items-center text-start">
+                <label
+                  class="col-span-1 font-bold"
+                  for="comment"
+                >
+                  コメント
+                </label>
+                <div class="border-b border-blue col-span-3">
+                  <input
+                    class="appearance-none border-none py-1 w-full focus:outline-none"
+                    id="title"
+                    type="comment"
+                    v-model="recordForm.comment"
+                    autocomplete="on"
+                    autofocus
+                    required
+                  >
+                </div>
+              </div>
+              <p
+                v-if="recordForm.errors.comment"
+                class="text-sm text-red-600"
+              >
+                {{ recordForm.errors.comment }}
+              </p>
+            </div>
+
+            <div>
+              <div class="gap-5 grid grid-cols-4 items-center text-start">
+                <label
+                  class="col-span-1 font-bold"
+                  for="category"
+                >
+                  カテゴリー
+                </label>
+                <div class="border-b border-blue col-span-3">
+                  <input
+                    class="appearance-none border-none py-1 w-full focus:outline-none"
+                    id="title"
+                    type="category"
+                    v-model="recordForm.category"
+                    autocomplete="on"
+                    autofocus
+                    required
+                  >
+                </div>
+              </div>
+              <p
+                v-if="recordForm.errors.category"
+                class="text-sm text-red-600"
+              >
+                {{ recordForm.errors.category }}
+              </p>
+            </div>
+          </div>
+
           <button
+            @click.prevent="onRecordClick()"
             class="font-bold bg-blue block h-7 mx-auto rounded-full
               text-white w-28 hover:opacity-80"
           >
