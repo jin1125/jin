@@ -22,6 +22,9 @@ Route::prefix('study')
     ->name('study')
     ->group(function () {
     Route::get('/', 'showStudy');
+
+    Route::post('/store', 'sendNewPost')
+        ->name('.store');
 });
 
 require __DIR__.'/auth.php';

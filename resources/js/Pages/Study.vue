@@ -74,8 +74,7 @@ const onLogoutClick = () => {
 const onRecordClick = () => {
   showProcessing.value = true;
 
-  Inertia.post(route('study.store'),
-    {},
+  recordForm.post(route('study.store'),
     {
       onSuccess: () => showModal.value = false,
       onFinish: () => showProcessing.value = false,
