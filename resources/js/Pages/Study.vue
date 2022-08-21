@@ -202,7 +202,6 @@ const onDestroyPostClick = (postId: number) => {
                   v-model="loginForm.email"
                   autocomplete="on"
                   autofocus
-                  required
                 >
               </div>
               <p
@@ -228,7 +227,6 @@ const onDestroyPostClick = (postId: number) => {
                   type="password"
                   v-model="loginForm.password"
                   autocomplete="on"
-                  required
                 >
               </div>
               <p
@@ -277,7 +275,6 @@ const onDestroyPostClick = (postId: number) => {
                   v-model="newPostForm.title"
                   autocomplete="on"
                   autofocus
-                  required
                 >
               </div>
               <p
@@ -330,7 +327,6 @@ const onDestroyPostClick = (postId: number) => {
                   v-model="newPostForm.progress"
                   autocomplete="on"
                   autofocus
-                  required
                 >
               </div>
               <p
@@ -409,7 +405,6 @@ const onDestroyPostClick = (postId: number) => {
                   v-model="newPostForm.category"
                   autocomplete="on"
                   autofocus
-                  required
                 >
               </div>
               <p
