@@ -177,56 +177,54 @@ const onRecordClick = () => {
 
         <div v-if="!isLogin && !showProcessing">
           <div class="mb-12 space-y-5">
-            <div>
-              <div class="gap-5 grid grid-cols-4 items-center text-start">
-                <label
-                  class="col-span-1 font-bold"
-                  for="email"
+            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
+                for="email"
+              >
+                Email
+              </label>
+              <div class="border-b border-blue col-span-3">
+                <input
+                  class="appearance-none border-none py-1
+                    w-full focus:outline-none"
+                  id="email"
+                  type="email"
+                  v-model="loginForm.email"
+                  autocomplete="on"
+                  autofocus
+                  required
                 >
-                  Email
-                </label>
-                <div class="border-b border-blue col-span-3">
-                  <input
-                    class="appearance-none border-none py-1 w-full focus:outline-none"
-                    id="email"
-                    type="email"
-                    v-model="loginForm.email"
-                    autocomplete="on"
-                    autofocus
-                    required
-                  >
-                </div>
               </div>
               <p
                 v-if="loginForm.errors.email"
-                class="text-sm text-red-600"
+                class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
                 {{ loginForm.errors.email }}
               </p>
             </div>
 
-            <div>
-              <div class="gap-5 grid grid-cols-4 items-center text-start">
-                <label
-                  class="col-span-1 font-bold"
-                  for="password"
+            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
+                for="password"
+              >
+                Password
+              </label>
+              <div class="border-b border-blue col-span-3">
+                <input
+                  class="appearance-none border-none py-1
+                    w-full focus:outline-none"
+                  id="password"
+                  type="password"
+                  v-model="loginForm.password"
+                  autocomplete="on"
+                  required
                 >
-                  Password
-                </label>
-                <div class="border-b border-blue col-span-3">
-                  <input
-                    class="appearance-none border-none py-1 w-full focus:outline-none"
-                    id="password"
-                    type="password"
-                    v-model="loginForm.password"
-                    autocomplete="on"
-                    required
-                  >
-                </div>
               </div>
               <p
                 v-if="loginForm.errors.password"
-                class="text-red-600 text-sm"
+                class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
                 {{ loginForm.errors.password }}
               </p>
@@ -252,195 +250,188 @@ const onRecordClick = () => {
           </div>
         </div>
 
-        <div
-          v-if="isLogin && !showProcessing"
-          class="flex-col space-y-4"
-        >
+        <div v-if="isLogin && !showProcessing">
           <div class="mb-12 space-y-5">
-            <div>
-              <div class="gap-5 grid grid-cols-4 items-center text-start">
-                <label
-                  class="col-span-1 font-bold"
-                  for="title"
+            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
+                for="title"
+              >
+                タイトル
+              </label>
+              <div class="border-b border-blue col-span-3">
+                <input
+                  class="appearance-none border-none py-1
+                    w-full focus:outline-none"
+                  id="title"
+                  type="text"
+                  v-model="recordForm.title"
+                  autocomplete="on"
+                  autofocus
+                  required
                 >
-                  タイトル
-                </label>
-                <div class="border-b border-blue col-span-3">
-                  <input
-                    class="appearance-none border-none py-1 w-full focus:outline-none"
-                    id="title"
-                    type="text"
-                    v-model="recordForm.title"
-                    autocomplete="on"
-                    autofocus
-                    required
-                  >
-                </div>
               </div>
               <p
                 v-if="recordForm.errors.title"
-                class="text-sm text-red-600"
+                class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
                 {{ recordForm.errors.title }}
               </p>
             </div>
 
-            <div>
-              <div class="gap-5 grid grid-cols-4 items-center text-start">
-                <label
-                  class="col-span-1 font-bold"
-                  for="link"
+            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
+                for="link"
+              >
+                リンク
+              </label>
+              <div class="border-b border-blue col-span-3">
+                <input
+                  class="appearance-none border-none py-1
+                    w-full focus:outline-none"
+                  id="link"
+                  type="url"
+                  v-model="recordForm.link"
+                  autocomplete="on"
+                  autofocus
+                  required
                 >
-                  リンク
-                </label>
-                <div class="border-b border-blue col-span-3">
-                  <input
-                    class="appearance-none border-none py-1 w-full focus:outline-none"
-                    id="link"
-                    type="url"
-                    v-model="recordForm.link"
-                    autocomplete="on"
-                    autofocus
-                    required
-                  >
-                </div>
               </div>
               <p
                 v-if="recordForm.errors.link"
-                class="text-sm text-red-600"
+                class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
                 {{ recordForm.errors.link }}
               </p>
             </div>
 
-            <div>
-              <div class="gap-5 grid grid-cols-4 items-center text-start">
-                <label
-                  class="col-span-1 font-bold"
-                  for="progress"
+            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
+                for="progress"
+              >
+                進捗
+              </label>
+              <div class="border-b border-blue col-span-3">
+                <input
+                  class="appearance-none border-none py-1
+                    w-full focus:outline-none"
+                  id="title"
+                  type="progress"
+                  v-model="recordForm.progress"
+                  autocomplete="on"
+                  autofocus
+                  required
                 >
-                  進捗
-                </label>
-                <div class="border-b border-blue col-span-3">
-                  <input
-                    class="appearance-none border-none py-1 w-full focus:outline-none"
-                    id="title"
-                    type="progress"
-                    v-model="recordForm.progress"
-                    autocomplete="on"
-                    autofocus
-                    required
-                  >
-                </div>
               </div>
               <p
                 v-if="recordForm.errors.progress"
-                class="text-sm text-red-600"
+                class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
                 {{ recordForm.errors.progress }}
               </p>
             </div>
 
-            <div>
-              <div class="gap-5 grid grid-cols-4 items-center text-start">
-                <label
-                  class="col-span-1 font-bold"
-                  for="complete_at"
+            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
+                for="complete_at"
+              >
+                完了日
+              </label>
+              <div class="border-b border-blue col-span-3">
+                <input
+                  class="appearance-none border-none py-1
+                    w-full focus:outline-none"
+                  id="title"
+                  type="complete_at"
+                  v-model="recordForm.complete_at"
+                  autocomplete="on"
+                  autofocus
+                  required
                 >
-                  完了日
-                </label>
-                <div class="border-b border-blue col-span-3">
-                  <input
-                    class="appearance-none border-none py-1 w-full focus:outline-none"
-                    id="title"
-                    type="complete_at"
-                    v-model="recordForm.complete_at"
-                    autocomplete="on"
-                    autofocus
-                    required
-                  >
-                </div>
               </div>
               <p
                 v-if="recordForm.errors.complete_at"
-                class="text-sm text-red-600"
+                class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
                 {{ recordForm.errors.complete_at }}
               </p>
             </div>
 
-            <div>
-              <div class="gap-5 grid grid-cols-4 items-center text-start">
-                <label
-                  class="col-span-1 font-bold"
-                  for="comment"
+            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
+                for="comment"
+              >
+                コメント
+              </label>
+              <div class="border-b border-blue col-span-3">
+                <input
+                  class="appearance-none border-none py-1
+                    w-full focus:outline-none"
+                  id="title"
+                  type="comment"
+                  v-model="recordForm.comment"
+                  autocomplete="on"
+                  autofocus
+                  required
                 >
-                  コメント
-                </label>
-                <div class="border-b border-blue col-span-3">
-                  <input
-                    class="appearance-none border-none py-1 w-full focus:outline-none"
-                    id="title"
-                    type="comment"
-                    v-model="recordForm.comment"
-                    autocomplete="on"
-                    autofocus
-                    required
-                  >
-                </div>
               </div>
               <p
                 v-if="recordForm.errors.comment"
-                class="text-sm text-red-600"
+                class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
                 {{ recordForm.errors.comment }}
               </p>
             </div>
 
-            <div>
-              <div class="gap-5 grid grid-cols-4 items-center text-start">
-                <label
-                  class="col-span-1 font-bold"
-                  for="category"
+            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
+                for="category"
+              >
+                カテゴリー
+              </label>
+              <div class="border-b border-blue col-span-3">
+                <input
+                  class="appearance-none border-none py-1
+                    w-full focus:outline-none"
+                  id="title"
+                  type="category"
+                  v-model="recordForm.category"
+                  autocomplete="on"
+                  autofocus
+                  required
                 >
-                  カテゴリー
-                </label>
-                <div class="border-b border-blue col-span-3">
-                  <input
-                    class="appearance-none border-none py-1 w-full focus:outline-none"
-                    id="title"
-                    type="category"
-                    v-model="recordForm.category"
-                    autocomplete="on"
-                    autofocus
-                    required
-                  >
-                </div>
               </div>
               <p
                 v-if="recordForm.errors.category"
-                class="text-sm text-red-600"
+                class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
                 {{ recordForm.errors.category }}
               </p>
             </div>
           </div>
 
-          <button
-            @click.prevent="onRecordClick()"
-            class="font-bold bg-blue block h-7 mx-auto rounded-full
-              text-white w-28 hover:opacity-80"
-          >
-            OK
-          </button>
+          <div class="space-y-4">
+            <button
+              @click.prevent="onRecordClick()"
+              class="font-bold bg-blue block h-7 mx-auto rounded-full
+                text-white w-28 hover:opacity-80"
+            >
+              OK
+            </button>
 
-          <button
-            @click.prevent="onCloseModalClick()"
-            class="font-bold bg-white block border border-blue h-7
-              mx-auto rounded-full text-blue w-28 hover:opacity-80"
-          >
-            Cancel
-          </button>
+            <button
+              @click.prevent="onCloseModalClick()"
+              class="font-bold bg-white block border border-blue h-7
+                mx-auto rounded-full text-blue w-28 hover:opacity-80"
+            >
+              Cancel
+            </button>
+          </div>
 
           <div class="text-end">
             <p
