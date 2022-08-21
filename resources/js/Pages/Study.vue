@@ -171,7 +171,6 @@ const onDestroyPostClick = (postId: number) => {
             </button>
           </li>
         </ul>
-
       </div>
     </div>
 
