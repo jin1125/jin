@@ -141,7 +141,7 @@ const onRecordClick = () => {
               {{ studyRecord.title }}
             </span>
             <a
-              class="justify-self-center"
+              class="justify-self-center hover:opacity-80"
               :href="studyRecord.link"
               target="_blank"
             >
@@ -158,7 +158,7 @@ const onRecordClick = () => {
             </span>
             <button
               v-if="isLogin"
-              class="justify-self-center"
+              class="justify-self-center hover:opacity-80"
             >
               <font-awesome-icon icon="fa-solid fa-delete-left" />
             </button>
