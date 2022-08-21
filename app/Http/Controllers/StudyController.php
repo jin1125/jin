@@ -38,4 +38,14 @@ class StudyController extends Controller
 
         return redirect()->route('study');
     }
+
+    /**
+     * 投稿削除リクエストを送信
+     */
+    public function sendDestroyPost(Request $request)
+    {
+        Study::destroy($request->input('postId'));
+
+        return redirect()->route('study');
+    }
 }

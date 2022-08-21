@@ -84,6 +84,12 @@ const onNewPostClick = () => {
     }
   );
 };
+
+const onDestroyPostClick = (postId: number) => {
+  Inertia.post(route('study.destroy'), {
+    postId: postId
+  });
+};
 </script>
 
 <template>
@@ -158,6 +164,7 @@ const onNewPostClick = () => {
             </span>
             <button
               v-if="isLogin"
+              @click.prevent="onDestroyPostClick(studyRecord.id)"
               class="justify-self-center hover:opacity-80"
             >
               <font-awesome-icon icon="fa-solid fa-delete-left" />

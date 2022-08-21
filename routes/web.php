@@ -25,6 +25,8 @@ Route::prefix('study')
 
     Route::post('/store', 'sendNewPost')
         ->name('.store');
+    Route::post('/destroy', 'sendDestroyPost')
+        ->name('.destroy');
 });
 
 require __DIR__.'/auth.php';
