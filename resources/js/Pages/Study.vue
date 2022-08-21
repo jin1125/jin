@@ -63,50 +63,53 @@ const onLogoutClick = () => {
       </h2>
     </div>
 
-    <div>
-      <div
-        class="bg-blue font-bold gap-2 grid
-          grid-cols-[150px_100px_100px_100px_minmax(200px,_1fr)_100px]
-          h-12 items-center overflow-x-auto px-5 text-white"
-      >
-        <h3>タイトル</h3>
-        <h3>リンク</h3>
-        <h3>進捗</h3>
-        <h3>完了日</h3>
-        <h3>コメント</h3>
-        <button
-          @click.prevent="onOpenModalClick()"
-          class="justify-self-end hover:opacity-80"
+    <div class="overflow-x-auto">
+      <div class="w-max">
+        <div
+          class="bg-blue font-bold gap-2 grid
+            grid-cols-[150px_100px_100px_100px_minmax(200px,_1fr)_50px]
+            h-12 items-center px-5 text-white"
         >
-          <font-awesome-icon icon="fa-solid fa-pen-to-square" />
-        </button>
-      </div>
+          <h3>タイトル</h3>
+          <h3>リンク</h3>
+          <h3>進捗</h3>
+          <h3>完了日</h3>
+          <h3>コメント</h3>
+          <button
+            @click.prevent="onOpenModalClick()"
+            class="justify-self-end hover:opacity-80"
+          >
+            <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+          </button>
+        </div>
 
-      <ul>
-        <li
-          v-for="(studyRecord) in studyRecords"
-          :key="studyRecord.id"
-          class="border-b border-blue font-bold gap-2 grid
-          grid-cols-[150px_100px_100px_100px_minmax(200px,_1fr)_100px]
-          items-center overflow-x-auto p-3"
-        >
-          <span class="break-all">
-            {{ studyRecord.title }}
-          </span>
-          <a :href="studyRecord.link" target="_blank">
-            link
-          </a>
-          <span>
-            {{ studyRecord.progress }}
-          </span>
-          <span>
-            {{ studyRecord.complete_at }}
-          </span>
-          <span class="break-all">
-            {{ studyRecord.comment }}
-          </span>
-        </li>
-      </ul>
+        <ul class="">
+          <li
+            v-for="(studyRecord) in studyRecords"
+            :key="studyRecord.id"
+            class="border-b border-blue  font-bold gap-2 grid
+            grid-cols-[150px_100px_100px_100px_minmax(200px,_1fr)_50px]
+            items-center p-3"
+          >
+            <span class="break-all">
+              {{ studyRecord.title }}
+            </span>
+            <a :href="studyRecord.link" target="_blank">
+              link
+            </a>
+            <span>
+              {{ studyRecord.progress }}
+            </span>
+            <span>
+              {{ studyRecord.complete_at }}
+            </span>
+            <span class="whitespace-pre">
+              {{ studyRecord.comment }}
+            </span>
+          </li>
+        </ul>
+
+      </div>
     </div>
 
     <Modal v-model="showModal">
