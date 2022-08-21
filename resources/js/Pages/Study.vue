@@ -26,6 +26,7 @@ const form = useForm({
 });
 
 const onOpenModalClick = () => showModal.value = true;
+const onCloseModalClick = () => showModal.value = false;
 
 const onLoginClick = () => {
   showProcessing.value = true
@@ -200,6 +201,7 @@ const onLogoutClick = () => {
           </button>
 
           <button
+            @click.prevent="onCloseModalClick()"
             class="font-bold bg-white block border border-blue mx-auto
               py-1 rounded-full text-blue w-28 hover:opacity-80"
           >

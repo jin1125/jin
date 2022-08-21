@@ -10,7 +10,7 @@ const emit = defineEmits([
   'update:modelValue',
 ]);
 
-const onCloseClick = () => {
+const onCloseModalClick = () => {
   emit('update:modelValue', false)
 };
 </script>
@@ -27,7 +27,7 @@ const onCloseClick = () => {
     >
       <div
         v-if="modelValue"
-        @click.self="onCloseClick"
+        @click.self="onCloseModalClick()"
         class="bg-black bg-opacity-30 bottom-0 fixed flex
           items-center justify-center left-0 right-0 top-0"
       >
