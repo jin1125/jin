@@ -35,7 +35,7 @@ const loginForm = useForm({
   password: '',
 });
 
-const recordForm = useForm({
+const newPostForm = useForm({
   title: '',
   link: '',
   progress: '',
@@ -71,14 +71,14 @@ const onLogoutClick = () => {
   );
 };
 
-const onRecordClick = () => {
+const onNewPostClick = () => {
   showProcessing.value = true;
 
-  recordForm.post(route('study.store'),
+  newPostForm.post(route('study.store'),
     {
       onSuccess: () => {
         showModal.value = false,
-        recordForm.reset()
+        newPostForm.reset()
       },
       onFinish: () => showProcessing.value = false,
     }
@@ -267,17 +267,17 @@ const onRecordClick = () => {
                     w-full focus:outline-none"
                   id="title"
                   type="text"
-                  v-model="recordForm.title"
+                  v-model="newPostForm.title"
                   autocomplete="on"
                   autofocus
                   required
                 >
               </div>
               <p
-                v-if="recordForm.errors.title"
+                v-if="newPostForm.errors.title"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ recordForm.errors.title }}
+                {{ newPostForm.errors.title }}
               </p>
             </div>
 
@@ -294,17 +294,17 @@ const onRecordClick = () => {
                     w-full focus:outline-none"
                   id="link"
                   type="url"
-                  v-model="recordForm.link"
+                  v-model="newPostForm.link"
                   autocomplete="on"
                   autofocus
                   required
                 >
               </div>
               <p
-                v-if="recordForm.errors.link"
+                v-if="newPostForm.errors.link"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ recordForm.errors.link }}
+                {{ newPostForm.errors.link }}
               </p>
             </div>
 
@@ -321,17 +321,17 @@ const onRecordClick = () => {
                     w-full focus:outline-none"
                   id="title"
                   type="progress"
-                  v-model="recordForm.progress"
+                  v-model="newPostForm.progress"
                   autocomplete="on"
                   autofocus
                   required
                 >
               </div>
               <p
-                v-if="recordForm.errors.progress"
+                v-if="newPostForm.errors.progress"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ recordForm.errors.progress }}
+                {{ newPostForm.errors.progress }}
               </p>
             </div>
 
@@ -348,17 +348,17 @@ const onRecordClick = () => {
                     w-full focus:outline-none"
                   id="title"
                   type="complete_at"
-                  v-model="recordForm.complete_at"
+                  v-model="newPostForm.complete_at"
                   autocomplete="on"
                   autofocus
                   required
                 >
               </div>
               <p
-                v-if="recordForm.errors.complete_at"
+                v-if="newPostForm.errors.complete_at"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ recordForm.errors.complete_at }}
+                {{ newPostForm.errors.complete_at }}
               </p>
             </div>
 
@@ -375,17 +375,17 @@ const onRecordClick = () => {
                     w-full focus:outline-none"
                   id="title"
                   type="comment"
-                  v-model="recordForm.comment"
+                  v-model="newPostForm.comment"
                   autocomplete="on"
                   autofocus
                   required
                 >
               </div>
               <p
-                v-if="recordForm.errors.comment"
+                v-if="newPostForm.errors.comment"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ recordForm.errors.comment }}
+                {{ newPostForm.errors.comment }}
               </p>
             </div>
 
@@ -402,24 +402,24 @@ const onRecordClick = () => {
                     w-full focus:outline-none"
                   id="title"
                   type="category"
-                  v-model="recordForm.category"
+                  v-model="newPostForm.category"
                   autocomplete="on"
                   autofocus
                   required
                 >
               </div>
               <p
-                v-if="recordForm.errors.category"
+                v-if="newPostForm.errors.category"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ recordForm.errors.category }}
+                {{ newPostForm.errors.category }}
               </p>
             </div>
           </div>
 
           <div class="space-y-4">
             <button
-              @click.prevent="onRecordClick()"
+              @click.prevent="onNewPostClick()"
               class="font-bold bg-blue block h-7 mx-auto rounded-full
                 text-white w-28 hover:opacity-80"
             >
