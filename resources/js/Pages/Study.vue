@@ -46,18 +46,20 @@ const onLoginClick = () => {
       onSuccess: () => showModal.value = false,
       onFinish: () => showProcessing.value = false,
       onError: () => form.reset('password'),
-  });
+    }
+  );
 };
 
 const onLogoutClick = () => {
-  showProcessing.value = true
+  showProcessing.value = true;
 
   Inertia.post(route('logout'),
     {},
     {
       onSuccess: () => showModal.value = false,
       onFinish: () => showProcessing.value = false,
-  });
+    }
+  );
 };
 </script>
 
