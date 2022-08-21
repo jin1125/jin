@@ -134,13 +134,13 @@ const onLogoutClick = () => {
       <div class="text-blue text-center">
         <div
           v-if="!showProcessing"
-          class="font-bold mb-10 text-blue text-2xl"
+          class="font-bold mb-12 text-blue text-2xl"
         >
           {{ !isLogin ? 'Admin login' : 'Edit?' }}
         </div>
 
         <div v-if="!isLogin && !showProcessing">
-          <div class="mb-10 space-y-5">
+          <div class="mb-12 space-y-5">
             <div>
               <div class="gap-5 grid grid-cols-4 items-center text-start">
                 <label
@@ -197,21 +197,32 @@ const onLogoutClick = () => {
             </div>
           </div>
 
-          <button
-            @click.prevent="onLoginClick()"
-            class="font-bold bg-blue py-1 rounded-full
+          <div class="space-y-4">
+            <button
+              @click.prevent="onLoginClick()"
+              class="font-bold bg-blue block h-7 mx-auto rounded-full
               text-white w-28 hover:opacity-80"
-          >
-            Login
-          </button>
+            >
+              Login
+            </button>
+
+            <button
+              @click.prevent="onCloseModalClick()"
+              class="font-bold bg-white block border border-blue h-7
+                mx-auto rounded-full text-blue w-28 hover:opacity-80"
+            >
+              Cancel
+            </button>
+          </div>
+
         </div>
 
         <div
           v-if="isLogin && !showProcessing"
-          class="flex-col space-y-5 w-52"
+          class="flex-col space-y-4 w-52"
         >
           <button
-            class="font-bold bg-blue block mx-auto py-1 rounded-full
+            class="font-bold bg-blue block h-7 mx-auto rounded-full
               text-white w-28 hover:opacity-80"
           >
             OK
@@ -219,8 +230,8 @@ const onLogoutClick = () => {
 
           <button
             @click.prevent="onCloseModalClick()"
-            class="font-bold bg-white block border border-blue mx-auto
-              py-1 rounded-full text-blue w-28 hover:opacity-80"
+            class="font-bold bg-white block border border-blue h-7
+              mx-auto rounded-full text-blue w-28 hover:opacity-80"
           >
             Cancel
           </button>
