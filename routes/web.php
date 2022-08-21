@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::inertia('/', 'Profile')
-    ->name('profile');
+Route::inertia('/', 'Profile')->name('profile');
 
 Route::prefix('study')
     ->controller(StudyController::class)
@@ -23,10 +22,9 @@ Route::prefix('study')
     ->group(function () {
     Route::get('/', 'showStudy');
 
-    Route::post('/store', 'sendNewPost')
-        ->name('.store');
-    Route::post('/destroy', 'sendDestroyPost')
-        ->name('.destroy');
+    Route::post('/store', 'sendNewPost')->name('.store');
+    Route::post('/update', 'sendUpdatePost')->name('.update');
+    Route::post('/destroy', 'sendDestroyPost')->name('.destroy');
 });
 
 require __DIR__.'/auth.php';
