@@ -67,18 +67,28 @@ const onLogoutClick = () => {
     <div class="overflow-x-auto">
       <div class="w-max">
         <div
-          class="bg-blue font-bold gap-2 grid
-            grid-cols-[150px_100px_100px_100px_minmax(200px,_1fr)_50px]
-            h-12 items-center px-5 text-white"
+          class="bg-blue font-bold gap-3 grid
+            grid-cols-[200px_50px_100px_100px_minmax(200px,_1fr)_50px]
+            h-12 items-center px-3 text-white"
         >
-          <h3>タイトル</h3>
-          <h3>リンク</h3>
-          <h3>進捗</h3>
-          <h3>完了日</h3>
-          <h3>コメント</h3>
+          <h3>
+            タイトル
+          </h3>
+          <h3 class="justify-self-center">
+            リンク
+          </h3>
+          <h3 class="justify-self-center">
+            進捗
+          </h3>
+          <h3 class="justify-self-center">
+            完了日
+          </h3>
+          <h3>
+            コメント
+          </h3>
           <button
             @click.prevent="onOpenModalClick()"
-            class="justify-self-end hover:opacity-80"
+            class="justify-self-center hover:opacity-80"
           >
             <font-awesome-icon icon="fa-solid fa-pen-to-square" />
           </button>
@@ -88,25 +98,32 @@ const onLogoutClick = () => {
           <li
             v-for="(studyRecord) in studyRecords"
             :key="studyRecord.id"
-            class="border-b border-blue  font-bold gap-2 grid
-            grid-cols-[150px_100px_100px_100px_minmax(200px,_1fr)_50px]
+            class="border-b border-blue  font-bold gap-3 grid
+            grid-cols-[200px_50px_100px_100px_minmax(200px,_1fr)_50px]
             items-center p-3"
           >
             <span class="break-all">
               {{ studyRecord.title }}
             </span>
-            <a :href="studyRecord.link" target="_blank">
-              link
+            <a
+              class="justify-self-center"
+              :href="studyRecord.link"
+              target="_blank"
+            >
+              <font-awesome-icon icon="fa-solid fa-link" />
             </a>
-            <span>
+            <span class="justify-self-center">
               {{ studyRecord.progress }}
             </span>
-            <span>
+            <span class="justify-self-center">
               {{ studyRecord.complete_at }}
             </span>
             <span class="whitespace-pre">
               {{ studyRecord.comment }}
             </span>
+            <button class="justify-self-center">
+              <font-awesome-icon icon="fa-solid fa-delete-left" />
+            </button>
           </li>
         </ul>
 

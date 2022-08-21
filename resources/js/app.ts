@@ -8,10 +8,10 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faAddressCard, faBookOpen, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faAddressCard, faBookOpen, faPenToSquare, faLink, faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faAddressCard, faBookOpen, faPenToSquare, faGithub);
+library.add(faAddressCard, faBookOpen, faPenToSquare, faLink, faDeleteLeft, faGithub);
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
