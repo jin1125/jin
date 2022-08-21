@@ -76,7 +76,10 @@ const onRecordClick = () => {
 
   recordForm.post(route('study.store'),
     {
-      onSuccess: () => showModal.value = false,
+      onSuccess: () => {
+        showModal.value = false,
+        recordForm.reset()
+      },
       onFinish: () => showProcessing.value = false,
     }
   );
