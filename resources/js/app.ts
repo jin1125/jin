@@ -11,13 +11,22 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   faAddressCard,
   faBookOpen,
+  faCirclePlus,
   faPenToSquare,
   faLink,
   faDeleteLeft
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faAddressCard, faBookOpen, faPenToSquare, faLink, faDeleteLeft, faGithub);
+library.add(
+  faAddressCard,
+  faBookOpen,
+  faCirclePlus,
+  faPenToSquare,
+  faLink,
+  faDeleteLeft,
+  faGithub
+);
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 

@@ -110,7 +110,7 @@ const onDestroyPostClick = (postId: number) => {
         <div
           class="bg-blue font-bold gap-3 grid
             grid-cols-[200px_50px_100px_100px_minmax(200px,_1fr)_50px]
-            h-12 items-center px-3 text-white"
+            h-10 items-center px-3 text-white"
         >
           <h3>
             タイトル
@@ -131,7 +131,7 @@ const onDestroyPostClick = (postId: number) => {
             @click.prevent="onOpenModalClick()"
             class="justify-self-center hover:opacity-80"
           >
-            <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+            <font-awesome-icon icon="fa-solid fa-circle-plus" />
           </button>
         </div>
 
