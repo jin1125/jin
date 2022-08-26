@@ -109,8 +109,12 @@ const onDestroyPostClick = (postId: number) => {
       <div class="w-max">
         <div
           class="bg-blue font-bold gap-3 grid
-            grid-cols-[200px_50px_100px_100px_minmax(200px,_1fr)_50px]
             h-10 items-center px-3 text-white"
+          :class="[
+            isLogin
+            ? 'grid-cols-[200px_50px_100px_100px_minmax(200px,_1fr)_10px_50px]'
+            : 'grid-cols-[200px_50px_100px_100px_minmax(200px,_1fr)_50px]'
+          ]"
         >
           <h3>
             タイトル
@@ -127,6 +131,12 @@ const onDestroyPostClick = (postId: number) => {
           <h3>
             コメント
           </h3>
+          <button
+            v-if="isLogin"
+            class="justify-self-center hover:opacity-80"
+          >
+            <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+          </button>
           <button
             @click.prevent="onOpenModalClick()"
             class="justify-self-center hover:opacity-80"
