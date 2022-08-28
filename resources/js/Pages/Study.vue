@@ -280,6 +280,7 @@ const onDestroyPostClick = (postId: number) => {
                   class="appearance-none border-none p-1
                     w-full focus:outline-none"
                   id="title"
+                  name="title"
                   type="text"
                   v-model="newPostForm.title"
                   autocomplete="on"
@@ -306,10 +307,10 @@ const onDestroyPostClick = (postId: number) => {
                   class="appearance-none border-none p-1
                     w-full focus:outline-none"
                   id="link"
+                  name="link"
                   type="url"
                   v-model="newPostForm.link"
                   autocomplete="on"
-                  autofocus
                 >
               </div>
               <p
@@ -328,15 +329,17 @@ const onDestroyPostClick = (postId: number) => {
                 進捗
               </label>
               <div class="border-b border-blue col-span-3">
-                <input
+                <select
                   class="appearance-none border-none p-1
                     w-full focus:outline-none"
                   id="progress"
-                  type="text"
-                  v-model="newPostForm.progress"
-                  autocomplete="on"
-                  autofocus
+                  name="progress"
                 >
+                  <option value=""></option>
+                  <option value="pending">Pending</option>
+                  <option value="doing">Doing</option>
+                  <option value="done">Done</option>
+                </select>
               </div>
               <p
                 v-if="newPostForm.errors.progress"
@@ -358,10 +361,10 @@ const onDestroyPostClick = (postId: number) => {
                   class="appearance-none border-none p-1
                     w-full focus:outline-none"
                   id="complete_at"
+                  name="complete_at"
                   type="text"
                   v-model="newPostForm.complete_at"
                   autocomplete="on"
-                  autofocus
                 >
               </div>
               <p
@@ -384,10 +387,10 @@ const onDestroyPostClick = (postId: number) => {
                   class="appearance-none border-none p-1
                     w-full focus:outline-none"
                   id="comment"
+                  name="comment"
                   type="text"
                   v-model="newPostForm.comment"
                   autocomplete="on"
-                  autofocus
                 >
               </div>
               <p
@@ -410,10 +413,10 @@ const onDestroyPostClick = (postId: number) => {
                   class="appearance-none border-none p-1
                     w-full focus:outline-none"
                   id="category"
+                  name="category"
                   type="text"
                   v-model="newPostForm.category"
                   autocomplete="on"
-                  autofocus
                 >
               </div>
               <p
