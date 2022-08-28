@@ -277,7 +277,7 @@ const onDestroyPostClick = (postId: number) => {
               </label>
               <div class="border-b border-blue col-span-3">
                 <input
-                  class="appearance-none border-none py-1
+                  class="appearance-none border-none p-1
                     w-full focus:outline-none"
                   id="title"
                   type="text"
@@ -303,7 +303,7 @@ const onDestroyPostClick = (postId: number) => {
               </label>
               <div class="border-b border-blue col-span-3">
                 <input
-                  class="appearance-none border-none py-1
+                  class="appearance-none border-none p-1
                     w-full focus:outline-none"
                   id="link"
                   type="url"
@@ -329,10 +329,10 @@ const onDestroyPostClick = (postId: number) => {
               </label>
               <div class="border-b border-blue col-span-3">
                 <input
-                  class="appearance-none border-none py-1
+                  class="appearance-none border-none p-1
                     w-full focus:outline-none"
-                  id="title"
-                  type="progress"
+                  id="progress"
+                  type="text"
                   v-model="newPostForm.progress"
                   autocomplete="on"
                   autofocus
@@ -355,10 +355,10 @@ const onDestroyPostClick = (postId: number) => {
               </label>
               <div class="border-b border-blue col-span-3">
                 <input
-                  class="appearance-none border-none py-1
+                  class="appearance-none border-none p-1
                     w-full focus:outline-none"
-                  id="title"
-                  type="complete_at"
+                  id="complete_at"
+                  type="text"
                   v-model="newPostForm.complete_at"
                   autocomplete="on"
                   autofocus
@@ -381,10 +381,10 @@ const onDestroyPostClick = (postId: number) => {
               </label>
               <div class="border-b border-blue col-span-3">
                 <input
-                  class="appearance-none border-none py-1
+                  class="appearance-none border-none p-1
                     w-full focus:outline-none"
-                  id="title"
-                  type="comment"
+                  id="comment"
+                  type="text"
                   v-model="newPostForm.comment"
                   autocomplete="on"
                   autofocus
@@ -407,10 +407,10 @@ const onDestroyPostClick = (postId: number) => {
               </label>
               <div class="border-b border-blue col-span-3">
                 <input
-                  class="appearance-none border-none py-1
+                  class="appearance-none border-none p-1
                     w-full focus:outline-none"
-                  id="title"
-                  type="category"
+                  id="category"
+                  type="text"
                   v-model="newPostForm.category"
                   autocomplete="on"
                   autofocus
