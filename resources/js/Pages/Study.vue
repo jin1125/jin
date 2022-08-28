@@ -275,18 +275,16 @@ const onDestroyPostClick = (postId: number) => {
               >
                 タイトル
               </label>
-              <div class="border-b border-blue col-span-3">
-                <input
-                  class="appearance-none border-none p-1
-                    w-full focus:outline-none"
-                  id="title"
-                  name="title"
-                  type="text"
-                  v-model="newPostForm.title"
-                  autocomplete="on"
-                  autofocus
-                >
-              </div>
+              <input
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="title"
+                name="title"
+                type="text"
+                v-model="newPostForm.title"
+                autocomplete="on"
+                autofocus
+              >
               <p
                 v-if="newPostForm.errors.title"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
@@ -302,17 +300,15 @@ const onDestroyPostClick = (postId: number) => {
               >
                 リンク
               </label>
-              <div class="border-b border-blue col-span-3">
-                <input
-                  class="appearance-none border-none p-1
-                    w-full focus:outline-none"
-                  id="link"
-                  name="link"
-                  type="url"
-                  v-model="newPostForm.link"
-                  autocomplete="on"
-                >
-              </div>
+              <input
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="link"
+                name="link"
+                type="url"
+                v-model="newPostForm.link"
+                autocomplete="on"
+              >
               <p
                 v-if="newPostForm.errors.link"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
@@ -328,19 +324,18 @@ const onDestroyPostClick = (postId: number) => {
               >
                 進捗
               </label>
-              <div class="border-b border-blue col-span-3">
-                <select
-                  class="appearance-none border-none p-1
-                    w-full focus:outline-none"
-                  id="progress"
-                  name="progress"
-                >
-                  <option value=""></option>
-                  <option value="pending">Pending</option>
-                  <option value="doing">Doing</option>
-                  <option value="done">Done</option>
-                </select>
-              </div>
+              <select
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="progress"
+                name="progress"
+                v-model="newPostForm.progress"
+              >
+                <option value=""></option>
+                <option value="pending">Pending</option>
+                <option value="doing">Doing</option>
+                <option value="done">Done</option>
+              </select>
               <p
                 v-if="newPostForm.errors.progress"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
@@ -356,17 +351,15 @@ const onDestroyPostClick = (postId: number) => {
               >
                 完了日
               </label>
-              <div class="border-b border-blue col-span-3">
-                <input
-                  class="appearance-none border-none p-1
-                    w-full focus:outline-none"
-                  id="complete_at"
-                  name="complete_at"
-                  type="text"
-                  v-model="newPostForm.complete_at"
-                  autocomplete="on"
-                >
-              </div>
+              <input
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="complete_at"
+                name="complete_at"
+                type="text"
+                v-model="newPostForm.complete_at"
+                autocomplete="on"
+              >
               <p
                 v-if="newPostForm.errors.complete_at"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
@@ -382,17 +375,14 @@ const onDestroyPostClick = (postId: number) => {
               >
                 コメント
               </label>
-              <div class="border-b border-blue col-span-3">
-                <input
-                  class="appearance-none border-none p-1
-                    w-full focus:outline-none"
-                  id="comment"
-                  name="comment"
-                  type="text"
-                  v-model="newPostForm.comment"
-                  autocomplete="on"
-                >
-              </div>
+              <textarea
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="comment"
+                name="comment"
+                v-model="newPostForm.comment"
+                rows="1"
+              ></textarea>
               <p
                 v-if="newPostForm.errors.comment"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
@@ -408,17 +398,15 @@ const onDestroyPostClick = (postId: number) => {
               >
                 カテゴリー
               </label>
-              <div class="border-b border-blue col-span-3">
-                <input
-                  class="appearance-none border-none p-1
-                    w-full focus:outline-none"
-                  id="category"
-                  name="category"
-                  type="text"
-                  v-model="newPostForm.category"
-                  autocomplete="on"
-                >
-              </div>
+              <input
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="category"
+                name="category"
+                type="text"
+                v-model="newPostForm.category"
+                autocomplete="on"
+              >
               <p
                 v-if="newPostForm.errors.category"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
