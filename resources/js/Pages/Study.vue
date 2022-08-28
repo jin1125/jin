@@ -456,3 +456,16 @@ const onDestroyPostClick = (postId: number) => {
     </Modal>
   </Page>
 </template>
+
+<style scoped>
+input[type="date"]{
+  position: relative;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+</style>
