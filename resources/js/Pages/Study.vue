@@ -149,7 +149,7 @@ const onDestroyPostClick = (postId: number) => {
           <li
             v-for="(studyRecord) in studyRecords"
             :key="studyRecord.id"
-            class="border-b border-blue  font-bold gap-3 grid
+            class="border-b border-blue font-bold gap-3 grid
             grid-cols-[200px_50px_100px_100px_minmax(200px,_1fr)_50px]
             items-center p-3"
           >
@@ -356,7 +356,7 @@ const onDestroyPostClick = (postId: number) => {
                   col-span-3 p-1 w-full focus:outline-none"
                 id="complete_at"
                 name="complete_at"
-                type="text"
+                type="date"
                 v-model="newPostForm.complete_at"
                 autocomplete="on"
               >
