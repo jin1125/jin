@@ -15,10 +15,13 @@ type StudyRecords = {
     comment: string
 };
 
-const showModal = ref(false);
-const showProcessing = ref(false);
+const newPostFlagNum = 0;
 
-defineProps({
+let showModal = ref(false);
+let showProcessing = ref(false);
+let postFormFlag = ref(0);
+
+const props = defineProps({
   isLogin: {
     type: Boolean,
     default: false,
@@ -44,11 +47,43 @@ const newPostForm = useForm({
   comment: '',
 });
 
-const onOpenModalClick = () => showModal.value = true;
+const updatePostForm = useForm({
+  id: 0,
+  category: '',
+  title: '',
+  link: '',
+  progress: '',
+  complete_at: '',
+  comment: '',
+});
+
+const onOpenModalClick = (postId: number) => {
+  if (postId) {
+      postFormFlag.value = postId;
+
+      props.studyRecords.forEach(record => {
+        if (record.id === postId) {
+          updatePostForm.id = record.id
+          updatePostForm.category = record.category
+          updatePostForm.title = record.title
+          updatePostForm.link = record.link
+          updatePostForm.progress = record.progress
+          updatePostForm.complete_at = record.complete_at
+          updatePostForm.comment = record.comment
+        }
+      });
+  }
+
+  if (!postId) {
+      postFormFlag.value = newPostFlagNum;
+  }
+
+  showModal.value = true
+};
 const onCloseModalClick = () => showModal.value = false;
 
 const onLoginClick = () => {
-  showProcessing.value = true
+  showProcessing.value = true;
 
   loginForm.post(route('login'),
     {
@@ -71,21 +106,33 @@ const onLogoutClick = () => {
   );
 };
 
-const onNewPostClick = () => {
+const onPostClick = () => {
   showProcessing.value = true;
 
-  newPostForm.post(route('study.store'),
-    {
-      onSuccess: () => {
-        showModal.value = false,
-        newPostForm.reset()
-      },
-      onFinish: () => showProcessing.value = false,
-    }
-  );
-};
+  if(!postFormFlag) {
+    newPostForm.post(route('study.store'),
+      {
+        onSuccess: () => {
+          showModal.value = false,
+          newPostForm.reset()
+        },
+        onFinish: () => showProcessing.value = false,
+      }
+    );
+  }
 
-const onUpdatePostClick = () => {};
+  if(postFormFlag) {
+    updatePostForm.post(route('study.update'),
+      {
+        onSuccess: () => {
+          showModal.value = false,
+          updatePostForm.reset()
+        },
+        onFinish: () => showProcessing.value = false,
+      }
+    );
+  }
+};
 
 const onDestroyPostClick = (postId: number) => {
   Inertia.post(route('study.destroy'), {
@@ -133,7 +180,7 @@ const onDestroyPostClick = (postId: number) => {
             コメント
           </h3>
           <button
-            @click.prevent="onOpenModalClick()"
+            @click.prevent="onOpenModalClick(newPostFlagNum)"
             class="justify-self-end hover:opacity-80"
           >
             <font-awesome-icon icon="fa-solid fa-circle-plus" />
@@ -183,7 +230,7 @@ const onDestroyPostClick = (postId: number) => {
               class="space-x-5 text-end"
             >
               <button
-                @click.prevent="onUpdatePostClick()"
+                @click.prevent="onOpenModalClick(studyRecord.id)"
                 class="justify-self-center hover:opacity-80"
               >
                 <font-awesome-icon icon="fa-solid fa-pen-to-square" />
@@ -206,7 +253,13 @@ const onDestroyPostClick = (postId: number) => {
           v-if="!showProcessing"
           class="font-bold mb-12 text-blue text-2xl"
         >
-          {{ !isLogin ? 'Admin login' : 'New post' }}
+          {{
+            !isLogin
+            ? 'Admin login'
+            : postFormFlag
+            ? 'Update post'
+            : 'New post'
+          }}
         </div>
 
         <div v-if="!isLogin && !showProcessing">
@@ -226,7 +279,6 @@ const onDestroyPostClick = (postId: number) => {
                   type="email"
                   v-model="loginForm.email"
                   autocomplete="on"
-                  autofocus
                 >
               </div>
               <p
@@ -329,7 +381,6 @@ const onDestroyPostClick = (postId: number) => {
                 type="text"
                 v-model="newPostForm.title"
                 autocomplete="on"
-                autofocus
               >
               <p
                 v-if="newPostForm.errors.title"
@@ -443,7 +494,7 @@ const onDestroyPostClick = (postId: number) => {
 
           <div class="space-y-4">
             <button
-              @click.prevent="onNewPostClick()"
+              @click.prevent="onPostClick()"
               class="font-bold bg-blue block h-7 mx-auto rounded-full
                 text-white w-28 hover:opacity-80"
             >
