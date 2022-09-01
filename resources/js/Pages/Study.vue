@@ -7,12 +7,12 @@ import { useForm } from '@inertiajs/inertia-vue3';
 
 type StudyRecords = {
     id: number
+    category: string
     title: string
     link: string
     progress: string
     complete_at: string
     comment: string
-    category: string
 };
 
 const showModal = ref(false);
@@ -36,12 +36,12 @@ const loginForm = useForm({
 });
 
 const newPostForm = useForm({
+  category: '',
   title: '',
   link: '',
   progress: '',
   complete_at: '',
   comment: '',
-  category: '',
 });
 
 const onOpenModalClick = () => showModal.value = true;
@@ -112,10 +112,13 @@ const onDestroyPostClick = (postId: number) => {
             h-10 items-center px-3 text-white"
           :class="[
             isLogin
-            ? 'grid-cols-[200px_50px_100px_100px_minmax(200px,_1fr)_10px_50px]'
-            : 'grid-cols-[200px_50px_100px_100px_minmax(200px,_1fr)_50px]'
+            ? 'grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_10px_50px]'
+            : 'grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_50px]'
           ]"
         >
+          <h3>
+            カテゴリー
+          </h3>
           <h3>
             タイトル
           </h3>
@@ -150,9 +153,12 @@ const onDestroyPostClick = (postId: number) => {
             v-for="(studyRecord) in studyRecords"
             :key="studyRecord.id"
             class="border-b border-blue font-bold gap-3 grid
-            grid-cols-[200px_50px_100px_100px_minmax(200px,_1fr)_50px]
+            grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_50px]
             items-center p-3"
           >
+            <span class="break-all">
+              {{ studyRecord.category }}
+            </span>
             <span class="break-all">
               {{ studyRecord.title }}
             </span>
@@ -274,6 +280,30 @@ const onDestroyPostClick = (postId: number) => {
             <div class="gap-x-5 grid grid-cols-4 items-center text-start">
               <label
                 class="col-span-1 font-bold"
+                for="category"
+              >
+                カテゴリー
+              </label>
+              <input
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="category"
+                name="category"
+                type="text"
+                v-model="newPostForm.category"
+                autocomplete="on"
+              >
+              <p
+                v-if="newPostForm.errors.category"
+                class="col-span-4 mt-1 text-center text-sm text-red-600"
+              >
+                {{ newPostForm.errors.category }}
+              </p>
+            </div>
+
+            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
+              <label
+                class="col-span-1 font-bold"
                 for="title"
               >
                 タイトル
@@ -391,30 +421,6 @@ const onDestroyPostClick = (postId: number) => {
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
                 {{ newPostForm.errors.comment }}
-              </p>
-            </div>
-
-            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
-              <label
-                class="col-span-1 font-bold"
-                for="category"
-              >
-                カテゴリー
-              </label>
-              <input
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="category"
-                name="category"
-                type="text"
-                v-model="newPostForm.category"
-                autocomplete="on"
-              >
-              <p
-                v-if="newPostForm.errors.category"
-                class="col-span-4 mt-1 text-center text-sm text-red-600"
-              >
-                {{ newPostForm.errors.category }}
               </p>
             </div>
           </div>

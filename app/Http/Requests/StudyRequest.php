@@ -24,12 +24,12 @@ class StudyRequest extends FormRequest
     public function rules()
     {
         return [
+            'category'    => ['required', 'string'],
             'title'       => ['required', 'string'],
             'link'        => ['nullable', 'string', 'active_url'],
             'progress'    => ['required', 'string'],
             'complete_at' => ['nullable', 'string'],
             'comment'     => ['nullable', 'string'],
-            'category'    => ['required', 'string'],
         ];
     }
 }

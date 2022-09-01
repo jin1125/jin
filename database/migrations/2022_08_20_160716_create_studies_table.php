@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('studies', function (Blueprint $table) {
             $table->id();
+            $table->string('category');
             $table->string('title');
             $table->string('link')->nullable();
             $table->string('progress');
             $table->string('complete_at')->nullable();
             $table->string('comment')->nullable();
-            $table->string('category');
         });
     }
 

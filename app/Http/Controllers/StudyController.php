@@ -29,12 +29,12 @@ class StudyController extends Controller
     public function sendNewPost(StudyRequest $request)
     {
         Study::create([
+            'category'    => $request->input('category'),
             'title'       => $request->input('title'),
             'link'        => $request->input('link'),
             'progress'    => $request->input('progress'),
             'complete_at' => $request->input('complete_at'),
             'comment'     => $request->input('comment'),
-            'category'    => $request->input('category'),
         ]);
 
         return redirect()->route('study');

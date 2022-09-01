@@ -23,11 +23,11 @@ class Study extends Model
      */
     protected $fillable = [
         'id',
+        'category',
         'title',
         'link',
         'progress',
         'complete_at',
         'comment',
-        'category',
     ];
 }
