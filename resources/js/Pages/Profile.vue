@@ -32,7 +32,7 @@ import Page from '@/Layouts/Page.vue';
           </h2>
           <p>
             HTML / CSS / TailwindCSS / JavaScript /
-            Typescript  / Vue.js / PHP / Laravel
+            Typescript / Vue.js / PHP / Laravel
           </p>
         </div>
 
@@ -49,9 +49,10 @@ import Page from '@/Layouts/Page.vue';
           <h2 class="font-bold text-2xl">
             Hobbies
           </h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio similique porro id, necessitatibus vitae a libero vel, ea voluptas tempora ad recusandae delectus obcaecati at quo dicta praesentium! Cumque, accusantium?
-          </p>
+          <div>
+            <p>旅行(国内 / 国外)</p>
+            <p>日本は47都道府県を制覇しました。</p>
+          </div>
         </div>
       </div>
     </div>
