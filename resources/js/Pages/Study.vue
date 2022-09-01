@@ -283,6 +283,9 @@ const onDestroyPostClick = (postId: number) => {
                 for="category"
               >
                 カテゴリー
+                <span class="text-red-600">
+                  *
+                </span>
               </label>
               <input
                 class="appearance-none border-0 border-b border-blue
@@ -307,6 +310,9 @@ const onDestroyPostClick = (postId: number) => {
                 for="title"
               >
                 タイトル
+                <span class="text-red-600">
+                  *
+                </span>
               </label>
               <input
                 class="appearance-none border-0 border-b border-blue
@@ -356,6 +362,9 @@ const onDestroyPostClick = (postId: number) => {
                 for="progress"
               >
                 進捗
+                <span class="text-red-600">
+                  *
+                </span>
               </label>
               <select
                 class="appearance-none border-0 border-b border-blue
