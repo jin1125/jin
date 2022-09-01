@@ -161,7 +161,10 @@ const onDestroyPostClick = (postId: number) => {
               :href="studyRecord.link"
               target="_blank"
             >
-              <font-awesome-icon icon="fa-solid fa-link" />
+              <font-awesome-icon
+                v-if="studyRecord.link"
+                icon="fa-solid fa-link"
+              />
             </a>
             <span class="justify-self-center">
               {{ studyRecord.progress }}
