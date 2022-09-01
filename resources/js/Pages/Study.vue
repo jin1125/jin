@@ -85,6 +85,8 @@ const onNewPostClick = () => {
   );
 };
 
+const onUpdatePostClick = () => {};
+
 const onDestroyPostClick = (postId: number) => {
   Inertia.post(route('study.destroy'), {
     postId: postId
@@ -109,12 +111,8 @@ const onDestroyPostClick = (postId: number) => {
       <div class="w-max">
         <div
           class="bg-blue font-bold gap-3 grid
-            h-10 items-center px-3 text-white"
-          :class="[
-            isLogin
-            ? 'grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_10px_50px]'
-            : 'grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_50px]'
-          ]"
+            grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_80px]
+            h-10 items-center pl-3 pr-6 text-white"
         >
           <h3>
             カテゴリー
@@ -135,14 +133,8 @@ const onDestroyPostClick = (postId: number) => {
             コメント
           </h3>
           <button
-            v-if="isLogin"
-            class="justify-self-center hover:opacity-80"
-          >
-            <font-awesome-icon icon="fa-solid fa-pen-to-square" />
-          </button>
-          <button
             @click.prevent="onOpenModalClick()"
-            class="justify-self-center hover:opacity-80"
+            class="justify-self-end hover:opacity-80"
           >
             <font-awesome-icon icon="fa-solid fa-circle-plus" />
           </button>
@@ -154,7 +146,12 @@ const onDestroyPostClick = (postId: number) => {
             :key="studyRecord.id"
             class="border-b border-blue font-bold gap-3 grid
             grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_50px]
-            items-center p-3"
+            items-center p-3 pr-6"
+            :class="[
+              isLogin
+              ? 'grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_80px]'
+              : 'grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)]'
+            ]"
           >
             <span class="break-all">
               {{ studyRecord.category }}
@@ -181,13 +178,23 @@ const onDestroyPostClick = (postId: number) => {
             <span class="whitespace-pre">
               {{ studyRecord.comment }}
             </span>
-            <button
+            <div
               v-if="isLogin"
-              @click.prevent="onDestroyPostClick(studyRecord.id)"
-              class="justify-self-center hover:opacity-80"
+              class="space-x-5 text-end"
             >
-              <font-awesome-icon icon="fa-solid fa-delete-left" />
-            </button>
+              <button
+                @click.prevent="onUpdatePostClick()"
+                class="justify-self-center hover:opacity-80"
+              >
+                <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+              </button>
+              <button
+                @click.prevent="onDestroyPostClick(studyRecord.id)"
+                class="justify-self-center hover:opacity-80"
+              >
+                <font-awesome-icon icon="fa-solid fa-delete-left" />
+              </button>
+            </div>
           </li>
         </ul>
       </div>
