@@ -367,10 +367,15 @@ const onDestroyPostClick = (postId: number) => {
                 autocomplete="on"
               >
               <p
-                v-if="newPostForm.errors.category"
+                v-if="newPostForm.errors.category
+                  || updatePostForm.errors.category"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ newPostForm.errors.category }}
+                {{
+                  postFormFlag
+                  ? updatePostForm.errors.category
+                  : newPostForm.errors.category
+                }}
               </p>
             </div>
 
@@ -405,10 +410,15 @@ const onDestroyPostClick = (postId: number) => {
                 autocomplete="on"
               >
               <p
-                v-if="newPostForm.errors.title"
+                v-if="newPostForm.errors.title
+                  || updatePostForm.errors.title"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ newPostForm.errors.title }}
+                {{
+                  postFormFlag
+                  ? updatePostForm.errors.title
+                  : newPostForm.errors.title
+                }}
               </p>
             </div>
 
@@ -440,10 +450,15 @@ const onDestroyPostClick = (postId: number) => {
                 autocomplete="on"
               >
               <p
-                v-if="newPostForm.errors.link"
+                v-if="newPostForm.errors.link
+                  || updatePostForm.errors.link"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ newPostForm.errors.link }}
+                {{
+                  postFormFlag
+                  ? updatePostForm.errors.link
+                  : newPostForm.errors.link
+                }}
               </p>
             </div>
 
@@ -484,10 +499,15 @@ const onDestroyPostClick = (postId: number) => {
                 <option value="done">Done</option>
               </select>
               <p
-                v-if="newPostForm.errors.progress"
+                v-if="newPostForm.errors.progress
+                  || updatePostForm.errors.progress"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ newPostForm.errors.progress }}
+                {{
+                  postFormFlag
+                  ? updatePostForm.errors.progress
+                  : newPostForm.errors.progress
+                }}
               </p>
             </div>
 
@@ -519,10 +539,15 @@ const onDestroyPostClick = (postId: number) => {
                 autocomplete="on"
               >
               <p
-                v-if="newPostForm.errors.complete_at"
+                v-if="newPostForm.errors.complete_at
+                  || updatePostForm.errors.complete_at"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ newPostForm.errors.complete_at }}
+                {{
+                  postFormFlag
+                  ? updatePostForm.errors.complete_at
+                  : newPostForm.errors.complete_at
+                }}
               </p>
             </div>
 
@@ -552,10 +577,15 @@ const onDestroyPostClick = (postId: number) => {
                 rows="1"
               ></textarea>
               <p
-                v-if="newPostForm.errors.comment"
+                v-if="newPostForm.errors.comment
+                  || updatePostForm.errors.comment"
                 class="col-span-4 mt-1 text-center text-sm text-red-600"
               >
-                {{ newPostForm.errors.comment }}
+                {{
+                  postFormFlag
+                  ? updatePostForm.errors.comment
+                  : newPostForm.errors.comment
+                }}
               </p>
             </div>
           </div>
