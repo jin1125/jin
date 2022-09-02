@@ -5,16 +5,6 @@ import Page from '@/Layouts/Page.vue';
 import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-vue3';
 
-type StudyRecords = {
-    id: number
-    category: string
-    title: string
-    link: string
-    progress: string
-    complete_at: string
-    comment: string
-};
-
 const newPostFlagNum = 0;
 
 let showModal = ref(false);
