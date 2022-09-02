@@ -6,7 +6,9 @@ use App\Http\Requests\StudyRequest;
 use App\Models\Study;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
+use Throwable;
 
 class StudyController extends Controller
 {
@@ -46,7 +48,14 @@ class StudyController extends Controller
     public function sendUpdatePost(StudyRequest $request)
     {
         $postId = $request->only(['id']);
-        $post   = Study::where('id', $postId)->firstOrFail();
+
+        try {
+            $post = Study::where('id', $postId)->firstOrFail();
+        } catch (Throwable $e) {
+            Log::error($e);
+
+            return redirect()->route('study');
+        }
 
         $post->update([
             'category'    => $request->input('category'),
