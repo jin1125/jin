@@ -41,6 +41,26 @@ class StudyController extends Controller
     }
 
     /**
+     * 投稿更新リクエストを送信
+     */
+    public function sendUpdatePost(StudyRequest $request)
+    {
+        $postId = $request->only(['id']);
+        $post   = Study::where('id', $postId)->firstOrFail();
+
+        $post->update([
+            'category'    => $request->input('category'),
+            'title'       => $request->input('title'),
+            'link'        => $request->input('link'),
+            'progress'    => $request->input('progress'),
+            'complete_at' => $request->input('complete_at'),
+            'comment'     => $request->input('comment'),
+        ]);
+
+        return redirect()->route('study');
+    }
+
+    /**
      * 投稿削除リクエストを送信
      */
     public function sendDestroyPost(Request $request)

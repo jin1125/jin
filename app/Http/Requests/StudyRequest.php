@@ -24,6 +24,7 @@ class StudyRequest extends FormRequest
     public function rules()
     {
         return [
+            'id'          => ['numeric'],
             'category'    => ['required', 'string'],
             'title'       => ['required', 'string'],
             'link'        => ['nullable', 'string', 'active_url'],
