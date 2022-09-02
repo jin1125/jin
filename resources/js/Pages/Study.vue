@@ -109,7 +109,7 @@ const onLogoutClick = () => {
 const onPostClick = () => {
   showProcessing.value = true;
 
-  if(!postFormFlag) {
+  if(!postFormFlag.value) {
     newPostForm.post(route('study.store'),
       {
         onSuccess: () => {
@@ -121,7 +121,7 @@ const onPostClick = () => {
     );
   }
 
-  if(postFormFlag) {
+  if(postFormFlag.value) {
     updatePostForm.post(route('study.update'),
       {
         onSuccess: () => {
@@ -347,12 +347,23 @@ const onDestroyPostClick = (postId: number) => {
                 </span>
               </label>
               <input
+                v-if="!postFormFlag"
                 class="appearance-none border-0 border-b border-blue
                   col-span-3 p-1 w-full focus:outline-none"
                 id="category"
                 name="category"
                 type="text"
                 v-model="newPostForm.category"
+                autocomplete="on"
+              >
+              <input
+                v-if="postFormFlag"
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="category"
+                name="category"
+                type="text"
+                v-model="updatePostForm.category"
                 autocomplete="on"
               >
               <p
@@ -374,12 +385,23 @@ const onDestroyPostClick = (postId: number) => {
                 </span>
               </label>
               <input
+                v-if="!postFormFlag"
                 class="appearance-none border-0 border-b border-blue
                   col-span-3 p-1 w-full focus:outline-none"
                 id="title"
                 name="title"
                 type="text"
                 v-model="newPostForm.title"
+                autocomplete="on"
+              >
+              <input
+                v-if="postFormFlag"
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="title"
+                name="title"
+                type="text"
+                v-model="updatePostForm.title"
                 autocomplete="on"
               >
               <p
@@ -398,12 +420,23 @@ const onDestroyPostClick = (postId: number) => {
                 リンク
               </label>
               <input
+                v-if="!postFormFlag"
                 class="appearance-none border-0 border-b border-blue
                   col-span-3 p-1 w-full focus:outline-none"
                 id="link"
                 name="link"
                 type="url"
                 v-model="newPostForm.link"
+                autocomplete="on"
+              >
+              <input
+                v-if="postFormFlag"
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="link"
+                name="link"
+                type="url"
+                v-model="updatePostForm.link"
                 autocomplete="on"
               >
               <p
@@ -425,11 +458,25 @@ const onDestroyPostClick = (postId: number) => {
                 </span>
               </label>
               <select
+                v-if="!postFormFlag"
                 class="appearance-none border-0 border-b border-blue
                   col-span-3 p-1 w-full focus:outline-none"
                 id="progress"
                 name="progress"
                 v-model="newPostForm.progress"
+              >
+                <option value=""></option>
+                <option value="pending">Pending</option>
+                <option value="doing">Doing</option>
+                <option value="done">Done</option>
+              </select>
+              <select
+                v-if="postFormFlag"
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="progress"
+                name="progress"
+                v-model="updatePostForm.progress"
               >
                 <option value=""></option>
                 <option value="pending">Pending</option>
@@ -452,12 +499,23 @@ const onDestroyPostClick = (postId: number) => {
                 完了日
               </label>
               <input
+                v-if="!postFormFlag"
                 class="appearance-none border-0 border-b border-blue
                   col-span-3 p-1 w-full focus:outline-none"
                 id="complete_at"
                 name="complete_at"
                 type="date"
                 v-model="newPostForm.complete_at"
+                autocomplete="on"
+              >
+              <input
+                v-if="postFormFlag"
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="complete_at"
+                name="complete_at"
+                type="date"
+                v-model="updatePostForm.complete_at"
                 autocomplete="on"
               >
               <p
@@ -476,11 +534,21 @@ const onDestroyPostClick = (postId: number) => {
                 コメント
               </label>
               <textarea
+                v-if="!postFormFlag"
                 class="appearance-none border-0 border-b border-blue
                   col-span-3 p-1 w-full focus:outline-none"
                 id="comment"
                 name="comment"
                 v-model="newPostForm.comment"
+                rows="1"
+              ></textarea>
+              <textarea
+                v-if="postFormFlag"
+                class="appearance-none border-0 border-b border-blue
+                  col-span-3 p-1 w-full focus:outline-none"
+                id="comment"
+                name="comment"
+                v-model="updatePostForm.comment"
                 rows="1"
               ></textarea>
               <p
