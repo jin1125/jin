@@ -5,7 +5,7 @@ import Header from './Header.vue';
 <template>
   <Header />
 
-  <main class="m-12 text-blue">
+  <main class="m-6 text-blue md:m-12">
     <slot />
   </main>
 </template>
