@@ -30,7 +30,7 @@ class StudyController extends Controller
     /**
      * 新規投稿リクエストを送信
      */
-    public function sendNewPost(
+    public function sendStorePost(
         StudyRequest $request,
         StorePostService $storePostService
     ) {

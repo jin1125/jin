@@ -22,7 +22,7 @@ Route::prefix('study')
     ->group(function () {
         Route::get('/', 'showStudy');
 
-        Route::post('/store', 'sendNewPost')->name('.store');
+        Route::post('/store', 'sendStorePost')->name('.store');
         Route::post('/update', 'sendUpdatePost')->name('.update');
         Route::post('/destroy', 'sendDestroyPost')->name('.destroy');
 });
