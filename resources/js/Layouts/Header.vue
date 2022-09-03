@@ -12,26 +12,32 @@ import { Link } from '@inertiajs/inertia-vue3';
         Shogo Jinta
       </h1>
 
-      <nav class="space-x-10">
+      <nav class="space-x-5 md:space-x-10">
         <Link
-          class="hover:opacity-80"
+          class="space-x-2 hover:opacity-80"
           :href="route('profile')"
         >
-          Profile
+          <span class="hidden sm:inline-block">
+            Profile
+          </span>
           <font-awesome-icon icon="fa-solid fa-address-card" />
         </Link>
         <Link
-          class="hover:opacity-80"
+          class="space-x-2 hover:opacity-80"
          :href="route('study')"
         >
-          Study
+          <span class="hidden sm:inline-block">
+            Study
+          </span>
           <font-awesome-icon icon="fa-solid fa-book-open" />
         </Link>
         <a
-          class="hover:opacity-80"
+          class="space-x-2 hover:opacity-80"
           href="https://github.com/jin1125"
         >
-          Github
+          <span class="hidden sm:inline-block">
+            Github
+          </span>
           <font-awesome-icon icon="fa-brands fa-github" />
         </a>
       </nav>
