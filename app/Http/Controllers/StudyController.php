@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudyRequest;
 use App\Models\Study;
+use App\Services\UpdatePostService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -45,26 +46,17 @@ class StudyController extends Controller
     /**
      * 投稿更新リクエストを送信
      */
-    public function sendUpdatePost(StudyRequest $request)
-    {
-        $postId = $request->only(['id']);
-
+    public function sendUpdatePost(
+        StudyRequest $request,
+        UpdatePostService $updatePostService
+    ) {
         try {
-            $post = Study::where('id', $postId)->firstOrFail();
+            $updatePostService->execute($request);
         } catch (Throwable $e) {
             Log::error($e);
 
             return redirect()->route('study');
         }
-
-        $post->update([
-            'category'    => $request->input('category'),
-            'title'       => $request->input('title'),
-            'link'        => $request->input('link'),
-            'progress'    => $request->input('progress'),
-            'complete_at' => $request->input('complete_at'),
-            'comment'     => $request->input('comment'),
-        ]);
 
         return redirect()->route('study');
     }
