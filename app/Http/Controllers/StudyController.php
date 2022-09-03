@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudyRequest;
 use App\Models\Study;
+use App\Services\ShowStudyService;
 use App\Services\StorePostService;
 use App\Services\UpdatePostService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
@@ -18,19 +18,9 @@ class StudyController extends Controller
     /**
      * Studyページを表示
      */
-    public function showStudy()
+    public function showStudy(ShowStudyService $showStudyService)
     {
-        $studyRecords = Study::get()->all();
-        $categories   = Arr::pluck(
-            $studyRecords,
-            'category'
-        );
-        array_multisort(
-            $categories,
-            SORT_ASC,
-            SORT_STRING,
-            $studyRecords
-        );
+        $studyRecords = $showStudyService->execute();
 
         return Inertia::render('Study', [
             'isLogin' => Auth::check(),
