@@ -4,20 +4,17 @@ namespace App\Services;
 
 use App\Models\Study;
 
-class UpdatePostService
+class StorePostService
 {
     /**
-     * 投稿更新の処理
+     * 新規投稿の処理
      *
      * @param  mixed $request
      * @return void
      */
     public function execute($request)
     {
-      $postId = $request->only(['id']);
-      $post   = Study::where('id', $postId)->firstOrFail();
-
-      $post->update([
+      Study::create([
         'category'    => $request->input('category'),
         'title'       => $request->input('title'),
         'link'        => $request->input('link'),

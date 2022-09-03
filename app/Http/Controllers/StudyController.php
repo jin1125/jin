@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudyRequest;
 use App\Models\Study;
+use App\Services\StorePostService;
 use App\Services\UpdatePostService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,16 +30,11 @@ class StudyController extends Controller
     /**
      * 新規投稿リクエストを送信
      */
-    public function sendNewPost(StudyRequest $request)
-    {
-        Study::create([
-            'category'    => $request->input('category'),
-            'title'       => $request->input('title'),
-            'link'        => $request->input('link'),
-            'progress'    => $request->input('progress'),
-            'complete_at' => $request->input('complete_at'),
-            'comment'     => $request->input('comment'),
-        ]);
+    public function sendNewPost(
+        StudyRequest $request,
+        StorePostService $storePostService
+    ) {
+        $storePostService->execute($request);
 
         return redirect()->route('study');
     }
