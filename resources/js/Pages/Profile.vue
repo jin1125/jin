@@ -40,9 +40,16 @@ import Page from '@/Layouts/Page.vue';
           <h2 class="font-bold text-2xl">
             Careers
           </h2>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur debitis architecto ex? In ratione quae ea porro laborum eligendi numquam sit! Nam molestiae error saepe porro. Vero veniam quia dolorum.
-          </p>
+          <ol>
+            <li>1. 人材系企業(営業)</li>
+            <li>2. WEBマーケティング企業(WEB制作)</li>
+            <li>3. 受託開発企業(エンジニア)</li>
+          </ol>
+          <div>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur debitis architecto ex? In ratione quae ea porro laborum eligendi numquam sit! Nam molestiae error saepe porro. Vero veniam quia dolorum.
+            </p>
+          </div>
         </div>
 
         <div class="space-y-3">
