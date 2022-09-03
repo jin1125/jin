@@ -7,6 +7,7 @@ use App\Models\Study;
 use App\Services\StorePostService;
 use App\Services\UpdatePostService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
@@ -19,7 +20,17 @@ class StudyController extends Controller
      */
     public function showStudy()
     {
-        $studyRecords = Study::get();
+        $studyRecords = Study::get()->all();
+        $categories   = Arr::pluck(
+            $studyRecords,
+            'category'
+        );
+        array_multisort(
+            $categories,
+            SORT_ASC,
+            SORT_STRING,
+            $studyRecords
+        );
 
         return Inertia::render('Study', [
             'isLogin' => Auth::check(),
