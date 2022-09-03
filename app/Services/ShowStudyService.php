@@ -15,10 +15,7 @@ class ShowStudyService
     public function execute()
     {
       $studyRecords = Study::get()->all();
-      $categories   = Arr::pluck(
-          $studyRecords,
-          'category'
-      );
+      $categories   = Arr::pluck($studyRecords, 'category');
       array_multisort(
           $categories,
           SORT_ASC,
