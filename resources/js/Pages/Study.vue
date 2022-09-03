@@ -147,7 +147,7 @@ const onDestroyPostClick = (postId: number) => {
     <div class="overflow-x-auto">
       <div class="w-max">
         <div
-          class="bg-blue font-bold gap-3 grid
+          class="bg-blue font-bold gap-5 grid
             grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_80px]
             h-10 items-center pl-3 pr-6 text-white"
         >
@@ -181,7 +181,7 @@ const onDestroyPostClick = (postId: number) => {
           <li
             v-for="(studyRecord) in studyRecords"
             :key="studyRecord.id"
-            class="border-b border-blue font-bold gap-3 grid
+            class="border-b border-blue font-bold gap-5 grid
             grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_50px]
             items-center p-3 pr-6"
             :class="[
