@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { PropType, ref } from 'vue';
-import Modal from '@/Components/Modal.vue';
-import Page from '@/Layouts/Page.vue';
+import { PropType, provide, ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-vue3';
+import StudyModal from '@/Components/StudyModal.vue';
+import Page from '@/Layouts/Page.vue';
 
 const newPostFlagNum = 0;
 
@@ -70,6 +70,7 @@ const onOpenModalClick = (postId: number) => {
 
   showModal.value = true
 };
+
 const onCloseModalClick = () => showModal.value = false;
 
 const onLoginClick = () => {
@@ -129,6 +130,17 @@ const onDestroyPostClick = (postId: number) => {
     postId: postId
   });
 };
+
+provide('showModal', showModal);
+provide('showProcessing', showProcessing);
+provide('postFormFlag', postFormFlag);
+provide('loginForm', loginForm);
+provide('newPostForm', newPostForm);
+provide('updatePostForm', updatePostForm);
+provide('onCloseModalClick', onCloseModalClick);
+provide('onLoginClick', onLoginClick);
+provide('onLogoutClick', onLogoutClick);
+provide('onPostClick', onPostClick);
 </script>
 
 <template>
@@ -237,390 +249,7 @@ const onDestroyPostClick = (postId: number) => {
       </div>
     </div>
 
-    <Modal v-model="showModal">
-      <div class="text-blue text-center">
-        <div
-          v-if="!showProcessing"
-          class="font-bold mb-12 text-blue text-2xl"
-        >
-          {{
-            !isLogin
-            ? 'Admin login'
-            : postFormFlag
-            ? 'Update post'
-            : 'New post'
-          }}
-        </div>
-
-        <div v-if="!isLogin && !showProcessing">
-          <div class="mb-12 space-y-5">
-            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
-              <label
-                class="col-span-1 font-bold"
-                for="email"
-              >
-                Email
-              </label>
-              <div class="border-b border-blue col-span-3">
-                <input
-                  class="appearance-none border-none py-1
-                    w-full focus:outline-none"
-                  id="email"
-                  type="email"
-                  v-model="loginForm.email"
-                  autocomplete="on"
-                >
-              </div>
-              <p
-                v-if="loginForm.errors.email"
-                class="col-span-4 mt-1 text-center text-sm text-red-600"
-              >
-                {{ loginForm.errors.email }}
-              </p>
-            </div>
-
-            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
-              <label
-                class="col-span-1 font-bold"
-                for="password"
-              >
-                Password
-              </label>
-              <div class="border-b border-blue col-span-3">
-                <input
-                  class="appearance-none border-none py-1
-                    w-full focus:outline-none"
-                  id="password"
-                  type="password"
-                  v-model="loginForm.password"
-                  autocomplete="on"
-                >
-              </div>
-              <p
-                v-if="loginForm.errors.password"
-                class="col-span-4 mt-1 text-center text-sm text-red-600"
-              >
-                {{ loginForm.errors.password }}
-              </p>
-            </div>
-          </div>
-
-          <div class="space-y-4">
-            <button
-              @click.prevent="onLoginClick()"
-              class="font-bold bg-blue block h-7 mx-auto rounded-full
-              text-white w-28 hover:opacity-80"
-            >
-              Login
-            </button>
-
-            <button
-              @click.prevent="onCloseModalClick()"
-              class="font-bold bg-white block border border-blue h-7
-                mx-auto rounded-full text-blue w-28 hover:opacity-80"
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-
-        <div v-if="isLogin && !showProcessing">
-          <div class="mb-12 space-y-5">
-            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
-              <label
-                class="col-span-1 font-bold"
-                for="category"
-              >
-                カテゴリー
-                <span class="text-red-600">
-                  *
-                </span>
-              </label>
-              <input
-                v-if="!postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="category"
-                name="category"
-                type="text"
-                v-model="newPostForm.category"
-                autocomplete="on"
-              >
-              <input
-                v-if="postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="category"
-                name="category"
-                type="text"
-                v-model="updatePostForm.category"
-                autocomplete="on"
-              >
-              <p
-                v-if="newPostForm.errors.category
-                  || updatePostForm.errors.category"
-                class="col-span-4 mt-1 text-center text-sm text-red-600"
-              >
-                {{
-                  postFormFlag
-                  ? updatePostForm.errors.category
-                  : newPostForm.errors.category
-                }}
-              </p>
-            </div>
-
-            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
-              <label
-                class="col-span-1 font-bold"
-                for="title"
-              >
-                タイトル
-                <span class="text-red-600">
-                  *
-                </span>
-              </label>
-              <input
-                v-if="!postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="title"
-                name="title"
-                type="text"
-                v-model="newPostForm.title"
-                autocomplete="on"
-              >
-              <input
-                v-if="postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="title"
-                name="title"
-                type="text"
-                v-model="updatePostForm.title"
-                autocomplete="on"
-              >
-              <p
-                v-if="newPostForm.errors.title
-                  || updatePostForm.errors.title"
-                class="col-span-4 mt-1 text-center text-sm text-red-600"
-              >
-                {{
-                  postFormFlag
-                  ? updatePostForm.errors.title
-                  : newPostForm.errors.title
-                }}
-              </p>
-            </div>
-
-            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
-              <label
-                class="col-span-1 font-bold"
-                for="link"
-              >
-                リンク
-              </label>
-              <input
-                v-if="!postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="link"
-                name="link"
-                type="url"
-                v-model="newPostForm.link"
-                autocomplete="on"
-              >
-              <input
-                v-if="postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="link"
-                name="link"
-                type="url"
-                v-model="updatePostForm.link"
-                autocomplete="on"
-              >
-              <p
-                v-if="newPostForm.errors.link
-                  || updatePostForm.errors.link"
-                class="col-span-4 mt-1 text-center text-sm text-red-600"
-              >
-                {{
-                  postFormFlag
-                  ? updatePostForm.errors.link
-                  : newPostForm.errors.link
-                }}
-              </p>
-            </div>
-
-            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
-              <label
-                class="col-span-1 font-bold"
-                for="progress"
-              >
-                進捗
-                <span class="text-red-600">
-                  *
-                </span>
-              </label>
-              <select
-                v-if="!postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="progress"
-                name="progress"
-                v-model="newPostForm.progress"
-              >
-                <option value=""></option>
-                <option value="pending">Pending</option>
-                <option value="doing">Doing</option>
-                <option value="done">Done</option>
-              </select>
-              <select
-                v-if="postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="progress"
-                name="progress"
-                v-model="updatePostForm.progress"
-              >
-                <option value=""></option>
-                <option value="pending">Pending</option>
-                <option value="doing">Doing</option>
-                <option value="done">Done</option>
-              </select>
-              <p
-                v-if="newPostForm.errors.progress
-                  || updatePostForm.errors.progress"
-                class="col-span-4 mt-1 text-center text-sm text-red-600"
-              >
-                {{
-                  postFormFlag
-                  ? updatePostForm.errors.progress
-                  : newPostForm.errors.progress
-                }}
-              </p>
-            </div>
-
-            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
-              <label
-                class="col-span-1 font-bold"
-                for="complete_at"
-              >
-                完了日
-              </label>
-              <input
-                v-if="!postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="complete_at"
-                name="complete_at"
-                type="date"
-                v-model="newPostForm.complete_at"
-                autocomplete="on"
-              >
-              <input
-                v-if="postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="complete_at"
-                name="complete_at"
-                type="date"
-                v-model="updatePostForm.complete_at"
-                autocomplete="on"
-              >
-              <p
-                v-if="newPostForm.errors.complete_at
-                  || updatePostForm.errors.complete_at"
-                class="col-span-4 mt-1 text-center text-sm text-red-600"
-              >
-                {{
-                  postFormFlag
-                  ? updatePostForm.errors.complete_at
-                  : newPostForm.errors.complete_at
-                }}
-              </p>
-            </div>
-
-            <div class="gap-x-5 grid grid-cols-4 items-center text-start">
-              <label
-                class="col-span-1 font-bold"
-                for="comment"
-              >
-                コメント
-              </label>
-              <textarea
-                v-if="!postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="comment"
-                name="comment"
-                v-model="newPostForm.comment"
-                rows="1"
-              ></textarea>
-              <textarea
-                v-if="postFormFlag"
-                class="appearance-none border-0 border-b border-blue
-                  col-span-3 p-1 w-full focus:outline-none"
-                id="comment"
-                name="comment"
-                v-model="updatePostForm.comment"
-                rows="1"
-              ></textarea>
-              <p
-                v-if="newPostForm.errors.comment
-                  || updatePostForm.errors.comment"
-                class="col-span-4 mt-1 text-center text-sm text-red-600"
-              >
-                {{
-                  postFormFlag
-                  ? updatePostForm.errors.comment
-                  : newPostForm.errors.comment
-                }}
-              </p>
-            </div>
-          </div>
-
-          <div class="space-y-4">
-            <button
-              @click.prevent="onPostClick()"
-              class="font-bold bg-blue block h-7 mx-auto rounded-full
-                text-white w-28 hover:opacity-80"
-            >
-              OK
-            </button>
-
-            <button
-              @click.prevent="onCloseModalClick()"
-              class="font-bold bg-white block border border-blue h-7
-                mx-auto rounded-full text-blue w-28 hover:opacity-80"
-            >
-              Cancel
-            </button>
-          </div>
-
-          <div
-            v-if="!postFormFlag"
-            class="text-end"
-          >
-            <p
-              @click.prevent="onLogoutClick()"
-              class="cursor-pointer inline-block select-none
-                underline hover:opacity-80"
-            >
-              Logout
-            </p>
-          </div>
-        </div>
-
-        <div v-if="showProcessing">
-          <div class="flex justify-center space-x-5">
-            <span class="animate-ping bg-blue h-2 rounded-full w-2" />
-            <span class="animate-ping bg-blue h-2 rounded-full w-2" />
-            <span class="animate-ping bg-blue h-2 rounded-full w-2" />
-          </div>
-        </div>
-      </div>
-    </Modal>
+    <StudyModal :is-login="isLogin" />
   </Page>
 </template>
 

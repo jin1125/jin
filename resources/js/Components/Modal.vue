@@ -1,18 +1,8 @@
 <script setup lang="ts">
-defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false,
-  },
-});
+import { inject } from 'vue';
 
-const emit = defineEmits([
-  'update:modelValue',
-]);
-
-const onCloseModalClick = () => {
-  emit('update:modelValue', false)
-};
+const showModal = inject('showModal');
+const onCloseModalClick = inject<() => boolean>('onCloseModalClick');
 </script>
 
 <template>
@@ -26,8 +16,8 @@ const onCloseModalClick = () => {
       leave-to-class="opacity-0"
     >
       <div
-        v-if="modelValue"
-        @click.self="onCloseModalClick()"
+        v-if="showModal"
+        @click.self="onCloseModalClick?.()"
         class="bg-black bg-opacity-30 bottom-0 fixed flex
           items-center justify-center left-0 right-0 top-0 z-20"
       >
