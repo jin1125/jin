@@ -598,7 +598,10 @@ const onDestroyPostClick = (postId: number) => {
             </button>
           </div>
 
-          <div class="text-end">
+          <div
+            v-if="!postFormFlag"
+            class="text-end"
+          >
             <p
               @click.prevent="onLogoutClick()"
               class="cursor-pointer inline-block select-none
