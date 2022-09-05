@@ -57,6 +57,7 @@ const onOpenModalClick = (postId: number) => {
           updatePostForm.category = record.category
           updatePostForm.title = record.title
           updatePostForm.link = record.link
+          // @ts-ignore
           updatePostForm.progress = record.progress
           updatePostForm.complete_at = record.complete_at
           updatePostForm.comment = record.comment
