@@ -230,7 +230,7 @@ provide('onPostClick', onPostClick);
             </span>
             <div
               v-if="isLogin"
-              class="space-x-5 text-end"
+              class="flex space-x-5 text-end"
             >
               <button
                 @click.prevent="onOpenModalClick(studyRecord.id)"
