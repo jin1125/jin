@@ -2,7 +2,8 @@
 import { inject, Ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
 import LoginModalContent from '@/Components/LoginModalContent.vue';
-import PostModalContent from './PostModalContent.vue';
+import PostModalContent from '@/Components/PostModalContent.vue';
+import ProcessAnimate from '@/Components/ProcessAnimate.vue';
 
 defineProps({
   isLogin: {
@@ -40,11 +41,7 @@ const postFormFlag = inject<Ref<number>>('postFormFlag');
       </div>
 
       <div v-if="showProcessing">
-        <div class="flex justify-center space-x-5">
-          <span class="animate-ping bg-blue h-2 rounded-full w-2" />
-          <span class="animate-ping bg-blue h-2 rounded-full w-2" />
-          <span class="animate-ping bg-blue h-2 rounded-full w-2" />
-        </div>
+        <ProcessAnimate />
       </div>
     </div>
   </Modal>
