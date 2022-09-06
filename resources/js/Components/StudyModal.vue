@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { inject, Ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
+import ModalTitle from '@/Components/ModalTitle.vue';
 import LoginModalContent from '@/Components/LoginModalContent.vue';
 import PostModalContent from '@/Components/PostModalContent.vue';
 import ProcessAnimate from '@/Components/ProcessAnimate.vue';
@@ -13,23 +14,13 @@ defineProps({
 });
 
 const showProcessing = inject<Ref<boolean>>('showProcessing');
-const postFormFlag = inject<Ref<number>>('postFormFlag');
 </script>
 
 <template>
   <modal>
     <div class="text-blue text-center">
-      <div
-        v-if="!showProcessing"
-        class="font-bold mb-12 text-blue text-2xl"
-      >
-        {{
-          !isLogin
-          ? 'Admin login'
-          : postFormFlag
-          ? 'Update post'
-          : 'New post'
-        }}
+      <div v-if="!showProcessing">
+        <ModalTitle :is-login="isLogin" />
       </div>
 
       <div v-if="!isLogin && !showProcessing">
