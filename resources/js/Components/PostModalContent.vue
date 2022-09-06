@@ -141,7 +141,7 @@ const onCloseModalClick = inject<() => boolean>('onCloseModalClick');
     <div class="gap-x-5 grid grid-cols-4 items-center text-start">
       <label
         class="col-span-1 font-bold"
-        for="progress"
+        for="status"
       >
         進捗
         <span class="text-red-600">
@@ -152,9 +152,9 @@ const onCloseModalClick = inject<() => boolean>('onCloseModalClick');
         v-if="!postFormFlag"
         class="appearance-none border-0 border-b border-blue
           col-span-3 p-1 w-full focus:outline-none"
-        id="progress"
-        name="progress"
-        v-model="newPostForm!.progress"
+        id="status"
+        name="status"
+        v-model="newPostForm!.status"
       >
         <option value=""></option>
         <option value="pending">Pending</option>
@@ -165,9 +165,9 @@ const onCloseModalClick = inject<() => boolean>('onCloseModalClick');
         v-if="postFormFlag"
         class="appearance-none border-0 border-b border-blue
           col-span-3 p-1 w-full focus:outline-none"
-        id="progress"
-        name="progress"
-        v-model="updatePostForm!.progress"
+        id="status"
+        name="status"
+        v-model="updatePostForm!.status"
       >
         <option value=""></option>
         <option value="pending">Pending</option>
@@ -175,14 +175,14 @@ const onCloseModalClick = inject<() => boolean>('onCloseModalClick');
         <option value="done">Done</option>
       </select>
       <p
-        v-if="newPostForm!.errors.progress
-          || updatePostForm!.errors.progress"
+        v-if="newPostForm!.errors.status
+          || updatePostForm!.errors.status"
         class="col-span-4 mt-1 text-center text-sm text-red-600"
       >
         {{
           postFormFlag
-          ? updatePostForm!.errors.progress
-          : newPostForm!.errors.progress
+          ? updatePostForm!.errors.status
+          : newPostForm!.errors.status
         }}
       </p>
     </div>

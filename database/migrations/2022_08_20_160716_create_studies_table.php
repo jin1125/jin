@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('title');
             $table->string('link')->nullable();
-            $table->string('progress');
+            $table->string('status');
             $table->string('complete_at')->nullable();
             $table->string('comment')->nullable();
         });

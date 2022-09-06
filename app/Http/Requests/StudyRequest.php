@@ -28,7 +28,7 @@ class StudyRequest extends FormRequest
             'category'    => ['required', 'string'],
             'title'       => ['required', 'string'],
             'link'        => ['nullable', 'string', 'active_url'],
-            'progress'    => ['required', 'string'],
+            'status'      => ['required', 'string'],
             'complete_at' => ['nullable', 'string'],
             'comment'     => ['nullable', 'string'],
         ];

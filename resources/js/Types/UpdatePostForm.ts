@@ -3,7 +3,7 @@ type UpdatePostForm = {
   category: string;
   title: string;
   link: string;
-  progress: string;
+  status: string;
   complete_at: string;
   comment: string;
 };

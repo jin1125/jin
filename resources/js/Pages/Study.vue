@@ -32,7 +32,7 @@ const newPostForm = useForm({
   category: '',
   title: '',
   link: '',
-  progress: '',
+  status: '',
   complete_at: '',
   comment: '',
 });
@@ -42,7 +42,7 @@ const updatePostForm = useForm({
   category: '',
   title: '',
   link: '',
-  progress: '',
+  status: '',
   complete_at: '',
   comment: '',
 });
@@ -57,8 +57,7 @@ const onOpenModalClick = (postId: number) => {
           updatePostForm.category = record.category
           updatePostForm.title = record.title
           updatePostForm.link = record.link
-          // @ts-ignore
-          updatePostForm.progress = record.progress
+          updatePostForm.status = record.status
           updatePostForm.complete_at = record.complete_at
           updatePostForm.comment = record.comment
         }
@@ -220,7 +219,7 @@ provide('onPostClick', onPostClick);
               />
             </a>
             <span class="justify-self-center">
-              {{ studyRecord.progress }}
+              {{ studyRecord.status }}
             </span>
             <span class="justify-self-center">
               {{ studyRecord.complete_at }}

@@ -18,7 +18,7 @@ class StorePostService
         'category'    => $request->input('category'),
         'title'       => $request->input('title'),
         'link'        => $request->input('link'),
-        'progress'    => $request->input('progress'),
+        'status'      => $request->input('status'),
         'complete_at' => $request->input('complete_at'),
         'comment'     => $request->input('comment'),
       ]);

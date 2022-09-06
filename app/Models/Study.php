@@ -26,7 +26,7 @@ class Study extends Model
         'category',
         'title',
         'link',
-        'progress',
+        'status',
         'complete_at',
         'comment',
     ];
