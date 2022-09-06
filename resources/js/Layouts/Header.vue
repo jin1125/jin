@@ -34,6 +34,7 @@ import { Link } from '@inertiajs/inertia-vue3';
         <a
           class="space-x-2 hover:opacity-80"
           href="https://github.com/jin1125"
+          target="_blank"
         >
           <span class="hidden sm:inline-block">
             Github
