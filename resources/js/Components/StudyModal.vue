@@ -17,7 +17,7 @@ const showProcessing = inject<Ref<boolean>>('showProcessing');
 </script>
 
 <template>
-  <modal>
+  <Modal>
     <div class="text-blue text-center">
       <div v-if="!showProcessing">
         <ModalTitle :is-login="isLogin" />
