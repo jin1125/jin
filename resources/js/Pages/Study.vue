@@ -2,8 +2,9 @@
 import { PropType, provide, ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-vue3';
-import StudyModal from '@/Components/StudyModal.vue';
 import Page from '@/Layouts/Page.vue';
+import StudyModal from '@/Components/StudyModal.vue';
+import PostRecords from '@/Components/PostRecords.vue';
 
 const newPostFlagNum = 0;
 
@@ -131,16 +132,19 @@ const onDestroyPostClick = (postId: number) => {
   });
 };
 
+provide('newPostFlagNum', newPostFlagNum);
 provide('showModal', showModal);
 provide('showProcessing', showProcessing);
 provide('postFormFlag', postFormFlag);
 provide('loginForm', loginForm);
 provide('newPostForm', newPostForm);
 provide('updatePostForm', updatePostForm);
+provide('onOpenModalClick', onOpenModalClick);
 provide('onCloseModalClick', onCloseModalClick);
 provide('onLoginClick', onLoginClick);
 provide('onLogoutClick', onLogoutClick);
 provide('onPostClick', onPostClick);
+provide('onDestroyPostClick', onDestroyPostClick);
 </script>
 
 <template>
@@ -156,98 +160,10 @@ provide('onPostClick', onPostClick);
       </h2>
     </div>
 
-    <div class="overflow-x-auto">
-      <div class="w-max">
-        <div
-          class="bg-blue font-bold gap-5 grid
-            grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_80px]
-            h-10 items-center pl-3 pr-6 text-white"
-        >
-          <h3>
-            カテゴリー
-          </h3>
-          <h3>
-            タイトル
-          </h3>
-          <h3 class="justify-self-center">
-            リンク
-          </h3>
-          <h3 class="justify-self-center">
-            進捗
-          </h3>
-          <h3 class="justify-self-center">
-            完了日
-          </h3>
-          <h3>
-            コメント
-          </h3>
-          <button
-            @click.prevent="onOpenModalClick(newPostFlagNum)"
-            class="justify-self-end hover:opacity-80"
-          >
-            <font-awesome-icon icon="fa-solid fa-circle-plus" />
-          </button>
-        </div>
-
-        <ul>
-          <li
-            v-for="(studyRecord) in studyRecords"
-            :key="studyRecord.id"
-            class="border-b border-blue font-bold gap-5 grid
-            grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_50px]
-            items-center p-3 pr-6"
-            :class="[
-              isLogin
-              ? 'grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)_80px]'
-              : 'grid-cols-[150px_200px_50px_100px_100px_minmax(200px,_1fr)]'
-            ]"
-          >
-            <span class="break-all">
-              {{ studyRecord.category }}
-            </span>
-            <span class="break-all">
-              {{ studyRecord.title }}
-            </span>
-            <a
-              class="justify-self-center hover:opacity-80"
-              :href="studyRecord.link"
-              target="_blank"
-            >
-              <font-awesome-icon
-                v-if="studyRecord.link"
-                icon="fa-solid fa-link"
-              />
-            </a>
-            <span class="justify-self-center">
-              {{ studyRecord.status }}
-            </span>
-            <span class="justify-self-center">
-              {{ studyRecord.complete_at }}
-            </span>
-            <span class="whitespace-pre">
-              {{ studyRecord.comment }}
-            </span>
-            <div
-              v-if="isLogin"
-              class="flex space-x-5 text-end"
-            >
-              <button
-                @click.prevent="onOpenModalClick(studyRecord.id)"
-                class="justify-self-center hover:opacity-80"
-              >
-                <font-awesome-icon icon="fa-solid fa-pen-to-square" />
-              </button>
-              <button
-                @click.prevent="onDestroyPostClick(studyRecord.id)"
-                class="justify-self-center hover:opacity-80"
-              >
-                <font-awesome-icon icon="fa-solid fa-delete-left" />
-              </button>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <PostRecords
+      :is-login="isLogin"
+      :study-records="studyRecords"
+    />
 
     <StudyModal :is-login="isLogin" />
   </Page>
