@@ -28,7 +28,7 @@ import Page from '@/Layouts/Page.vue';
       </div>
 
       <div class="space-y-10 text-blue">
-        <div class="space-y-3">
+        <div class="space-y-5">
           <h2 class="font-bold text-2xl">
             Skills
           </h2>
@@ -38,7 +38,7 @@ import Page from '@/Layouts/Page.vue';
           </p>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-5">
           <h2 class="font-bold text-2xl">
             Careers
           </h2>
@@ -47,14 +47,42 @@ import Page from '@/Layouts/Page.vue';
             <li>2. WEBマーケティング企業(WEB制作)</li>
             <li>3. 受託開発企業(エンジニア)</li>
           </ol>
-          <div>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur debitis architecto ex? In ratione quae ea porro laborum eligendi numquam sit! Nam molestiae error saepe porro. Vero veniam quia dolorum.
-            </p>
-          </div>
+          <p>
+            人材系のベンチャー企業にてキャリアをスタート。
+          </p>
+          <p>
+            「仕事のできるカッコいいビジネスマン」を目指し、
+            とにかくがむしゃらに仕事に没頭していました。
+            その甲斐もあってか、「営業成績は毎月社内1位」「歴代の月間売上成績の中で1位」
+            という結果を残すことができました。
+            このような努力と結果が認められ、
+            東京オフィスを統括する責任者を務めさせて頂きました。
+          </p>
+          <p>
+            恵まれた環境の中で順風満帆にキャリアを築いていましたが、
+            新たな挑戦をしたいという気持ちから、
+            興味のあったWEBマーケティングのベンチャー企業へとキャリアチェンジ。
+          </p>
+          <p>
+            総合職として入社しましたが、未経験であるWEB制作部配属となり、
+            「とにかく自走できるようになる」ことを目標に日々自己研鑽に努めました。
+            その姿勢を評価頂き、「新人賞」を受賞することができました。
+            少しずつできることも増えていき、充実した日々でしたが、会社が突然の倒産。
+          </p>
+          <p>
+            今後のキャリアに悩みましたが、「なにかを作る楽しさ」「もっと技術を深めたい」
+            という気持ちからプログラミングを独学。
+          </p>
+          <p>
+            現在は受託開発の企業にて勤務し、先輩方との技術力の差を痛感しながらも、
+            少しでも近づくために日々自己研鑽に励んでいます。
+          </p>
+          <p>
+            以上、お読み頂きありがとうございました。
+          </p>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-5">
           <h2 class="font-bold text-2xl">
             Hobbies
           </h2>
