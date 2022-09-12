@@ -5,7 +5,8 @@ import Page from '@/Layouts/Page.vue';
 <template>
   <Page>
     <div
-      class="grid justify-items-center space-y-6 md:grid-cols-2 md:space-y-0"
+      class="grid justify-items-center mb-10 space-y-6
+        md:grid-cols-2 md:space-y-0"
     >
       <div class="space-y-6 text-center">
         <img
