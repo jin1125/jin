@@ -27,7 +27,7 @@ import Page from '@/Layouts/Page.vue';
         </div>
       </div>
 
-      <div class="space-y-10 text-blue">
+      <div class="space-y-14 text-blue">
         <div class="space-y-3">
           <h2 class="font-bold text-3xl">
             Skills
