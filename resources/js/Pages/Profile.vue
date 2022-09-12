@@ -89,9 +89,6 @@ import Page from '@/Layouts/Page.vue';
             し、先輩方との技術力の差を痛感しながらも、
             少しでも近づくために日々自己研鑽に励んでいます。
           </p>
-          <p>
-            以上、お読み頂きありがとうございました。
-          </p>
         </div>
 
         <div class="space-y-5">
