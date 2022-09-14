@@ -1,4 +1,9 @@
-## Tech Stack
+## Website
+https://shogojinta.com/
+
+---
+
+## Dev Tech Stack
 
 - Laravel 9
 - Inertia.js
@@ -8,3 +13,5 @@
 - TailwindCSS
 - Vite
 - Docker
+
+---
