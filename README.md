@@ -13,6 +13,6 @@ https://shogojinta.com/
 - TailwindCSS
 - Vite
 - Docker
-- AWS(Lightsail/Route53)
+- AWS (Lightsail / Route53)
 
 ---
